@@ -1,0 +1,127 @@
+{
+  "id": "pont",
+  "nom": "Pont fessier",
+  "categorie": "echauffement",
+  "duree": 60,
+  "cotes": false,
+  "description": "Réveille les fessiers, qui soulagent le bas du dos.",
+  "consigne": "Sur le dos, genoux fléchis. Monte le bassin en serrant les fessiers, redescends lentement.",
+  "vigilance": "En haut, ne creuse pas le bas du dos : c'est le fessier qui pousse.",
+  "zones": [
+    "fessiers",
+    "ischios"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=pont+fessier+exercice+tutoriel",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          30,
+          110
+        ],
+        "n": [
+          [
+            50,
+            117,
+            30,
+            110
+          ],
+          [
+            50,
+            117,
+            72,
+            117,
+            94,
+            117
+          ],
+          [
+            50,
+            119,
+            70,
+            119,
+            90,
+            119
+          ],
+          [
+            94,
+            117,
+            118,
+            88,
+            132,
+            121
+          ]
+        ],
+        "f": [
+          [
+            94,
+            117,
+            124,
+            88,
+            138,
+            121
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          30,
+          110
+        ],
+        "n": [
+          [
+            50,
+            117,
+            30,
+            110
+          ],
+          [
+            50,
+            117,
+            69,
+            107,
+            88,
+            97
+          ],
+          [
+            50,
+            119,
+            70,
+            119,
+            90,
+            119
+          ],
+          [
+            88,
+            97,
+            122,
+            86,
+            132,
+            121
+          ]
+        ],
+        "f": [
+          [
+            88,
+            97,
+            128,
+            86,
+            138,
+            121
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}

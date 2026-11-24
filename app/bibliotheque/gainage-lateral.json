@@ -1,0 +1,109 @@
+{
+  "id": "gainage-lateral",
+  "nom": "Gainage latéral",
+  "categorie": "force",
+  "duree": 20,
+  "cotes": true,
+  "description": "Renforce les muscles latéraux du tronc, très utiles pour protéger le bas du dos.",
+  "consigne": "Sur le côté, avant-bras au sol sous l'épaule. Monte le bassin, corps aligné.",
+  "vigilance": "Variante facile : genoux fléchis au sol.",
+  "zones": [
+    "tronc",
+    "hanches"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=gainage+lat%C3%A9ral+d%C3%A9butant+genoux",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          146,
+          70
+        ],
+        "n": [
+          [
+            132,
+            80,
+            146,
+            70
+          ],
+          [
+            30,
+            119,
+            81,
+            100,
+            132,
+            80
+          ],
+          [
+            132,
+            80,
+            130,
+            104,
+            150,
+            121
+          ],
+          [
+            132,
+            80,
+            112,
+            90,
+            94,
+            96
+          ]
+        ],
+        "f": [],
+        "t": []
+      },
+      {
+        "h": [
+          146,
+          70
+        ],
+        "n": [
+          [
+            132,
+            80,
+            146,
+            70
+          ],
+          [
+            30,
+            119,
+            81,
+            100,
+            132,
+            80
+          ],
+          [
+            132,
+            80,
+            130,
+            104,
+            150,
+            121
+          ],
+          [
+            132,
+            80,
+            134,
+            56,
+            136,
+            32
+          ]
+        ],
+        "f": [],
+        "t": []
+      }
+    ]
+  }
+}

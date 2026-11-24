@@ -1,0 +1,126 @@
+{
+  "id": "curlup",
+  "nom": "Curl-up McGill",
+  "categorie": "force",
+  "duree": 40,
+  "cotes": false,
+  "description": "La version du crunch conçue par Stuart McGill : elle travaille les grands droits, les « tablettes », sans enrouler le bas du dos.",
+  "consigne": "Sur le dos, une jambe pliée, l'autre tendue, mains sous le creux des reins. Décolle tête et épaules de quelques centimètres d'un bloc, tiens 8 à 10 secondes, redescends. Change de jambe à mi-temps.",
+  "vigilance": "Ne rentre pas le menton et n'écrase pas le dos sur les mains : le mouvement est minuscule.",
+  "zones": [
+    "tronc"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=McGill+curl+up+modifi%C3%A9+tutoriel",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          30,
+          110
+        ],
+        "n": [
+          [
+            48,
+            116,
+            30,
+            110
+          ],
+          [
+            48,
+            116,
+            70,
+            116,
+            92,
+            116
+          ],
+          [
+            92,
+            116,
+            114,
+            88,
+            134,
+            119
+          ],
+          [
+            48,
+            116,
+            62,
+            121,
+            80,
+            119
+          ]
+        ],
+        "f": [
+          [
+            92,
+            116,
+            128,
+            118,
+            164,
+            120
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          34,
+          99
+        ],
+        "n": [
+          [
+            50,
+            108,
+            34,
+            99
+          ],
+          [
+            50,
+            108,
+            71,
+            114,
+            92,
+            116
+          ],
+          [
+            92,
+            116,
+            114,
+            88,
+            134,
+            119
+          ],
+          [
+            50,
+            108,
+            62,
+            119,
+            80,
+            119
+          ]
+        ],
+        "f": [
+          [
+            92,
+            116,
+            128,
+            118,
+            164,
+            120
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}

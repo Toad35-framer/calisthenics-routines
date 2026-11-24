@@ -1,0 +1,128 @@
+{
+  "id": "grimpeur",
+  "nom": "Grimpeur lent",
+  "categorie": "force",
+  "duree": 40,
+  "cotes": false,
+  "description": "Gainage dynamique qui fait aussi monter le cœur : utile pour dépenser plus pendant la séance.",
+  "consigne": "En planche haute, mains sous les épaules. Amène un genou vers la poitrine, repose, change. Rythme régulier, sans sauter.",
+  "vigilance": "Bassin à hauteur des épaules, dos plat. Ralentis si le bas du dos se creuse.",
+  "zones": [
+    "tronc",
+    "épaules",
+    "cuisses"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=mountain+climber+lent+d%C3%A9butant",
+  "variantes": {
+    "facile": "gainage",
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          152,
+          65
+        ],
+        "n": [
+          [
+            136,
+            75,
+            152,
+            65
+          ],
+          [
+            81,
+            97,
+            108,
+            86,
+            136,
+            75
+          ],
+          [
+            136,
+            75,
+            136,
+            98,
+            136,
+            121
+          ],
+          [
+            81,
+            97,
+            53,
+            108,
+            26,
+            119
+          ]
+        ],
+        "f": [
+          [
+            81,
+            97,
+            110,
+            104,
+            94,
+            121
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          152,
+          65
+        ],
+        "n": [
+          [
+            136,
+            75,
+            152,
+            65
+          ],
+          [
+            81,
+            97,
+            108,
+            86,
+            136,
+            75
+          ],
+          [
+            136,
+            75,
+            136,
+            98,
+            136,
+            121
+          ],
+          [
+            81,
+            97,
+            110,
+            104,
+            94,
+            121
+          ]
+        ],
+        "f": [
+          [
+            81,
+            97,
+            53,
+            108,
+            26,
+            119
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}

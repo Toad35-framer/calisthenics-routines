@@ -1,0 +1,106 @@
+{
+  "id": "depart",
+  "nom": "Départ",
+  "categorie": "special",
+  "duree": 10,
+  "cotes": false,
+  "description": "Compte à rebours avant le premier exercice.",
+  "consigne": "Installe-toi sur le tapis et prends la première position.",
+  "vigilance": "",
+  "zones": [],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          100,
+          -9
+        ],
+        "n": [
+          [
+            100,
+            5,
+            100,
+            -9
+          ],
+          [
+            100,
+            49,
+            100,
+            27,
+            100,
+            5
+          ],
+          [
+            100,
+            121,
+            100,
+            85,
+            100,
+            49
+          ],
+          [
+            100,
+            8,
+            103,
+            30,
+            106,
+            52
+          ]
+        ],
+        "f": [],
+        "t": []
+      },
+      {
+        "h": [
+          100,
+          -9
+        ],
+        "n": [
+          [
+            100,
+            5,
+            100,
+            -9
+          ],
+          [
+            100,
+            49,
+            100,
+            27,
+            100,
+            5
+          ],
+          [
+            100,
+            121,
+            100,
+            85,
+            100,
+            49
+          ],
+          [
+            100,
+            8,
+            104,
+            30,
+            108,
+            52
+          ]
+        ],
+        "f": [],
+        "t": []
+      }
+    ]
+  }
+}

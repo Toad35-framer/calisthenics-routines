@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mes routines Calisthenics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Une colonne étroite pensée pour le téléphone. Onglets en bas ; l'éditeur a sa barre « Lancer » ; le lecteur couvre tout l'écran. */
+:root{
+  --bg:#eef2f0; --surface:#ffffff; --ink:#13201b; --muted:#566660; --line:#d5ded9; --soft:#e3eae6;
+  --c-echauffement:#2b6cb0; --c-force:#0d7a59; --c-flow:#a1306b; --c-etirement:#6d4bb3; --c-repos:#b45f06; --c-special:#566660;
+  --ok:#0d7a59; --danger:#b42318;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1412; --surface:#151f1c; --ink:#e9f1ed; --muted:#93a59e; --line:#26342f; --soft:#1d2925;
+    --c-echauffement:#6ea8e8; --c-force:#3ccf9d; --c-flow:#e874ad; --c-etirement:#b592e6; --c-repos:#f0a04b; --c-special:#93a59e;
+    --ok:#3ccf9d; --danger:#ff8a80; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1412; --surface:#151f1c; --ink:#e9f1ed; --muted:#93a59e; --line:#26342f; --soft:#1d2925;
+  --c-echauffement:#6ea8e8; --c-force:#3ccf9d; --c-flow:#e874ad; --c-etirement:#b592e6; --c-repos:#f0a04b; --c-special:#93a59e;
+  --ok:#3ccf9d; --danger:#ff8a80; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;-webkit-text-size-adjust:100%}
+body.has-tabs main{padding-bottom:96px}
+body.has-launch main{padding-bottom:112px}
+body.playing{overflow:hidden}
+main{max-width:560px;margin:0 auto;padding:14px 16px 32px;display:flex;flex-direction:column;gap:16px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--c-echauffement);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cat-echauffement{--c:var(--c-echauffement)} .cat-force{--c:var(--c-force)} .cat-flow{--c:var(--c-flow)}
+.cat-etirement{--c:var(--c-etirement)} .cat-repos{--c:var(--c-repos)} .cat-special{--c:var(--c-special)}
+
+/* titres */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 12px;min-height:44px}
+.top .btn{white-space:nowrap;flex-shrink:0}
+.top>strong{align-self:center}
+h1{margin:0;font-family:var(--display);font-size:34px;line-height:1;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.eyebrow{margin:0;color:var(--muted);font-size:14px;font-weight:500}
+.sec{margin:0 0 8px;font-family:var(--display);font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.meta{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);margin:0;padding:12px 0}
+.hint{color:var(--muted);font-size:14px;margin:6px 0 0}
+.lead{font-size:17px;margin:0}
+p{margin:0}
+
+/* boutons */
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.danger{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 40%,var(--line))}
+.btn.primary.danger{background:var(--danger);color:#fff;border-color:var(--danger)}
+.btn.ghost{background:transparent;border-color:transparent;padding:0 8px}
+.btn.sm{min-height:38px;padding:0 12px}
+.btn.big{min-height:54px;font-size:18px;padding:0 28px}
+.btn.wide{width:100%}
+.btn.icon{width:48px;padding:0;font-size:24px}
+.btn:disabled{opacity:.45;cursor:default}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px}
+.tool{min-height:36px;min-width:36px;padding:0 10px;border-radius:8px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:14px;font-weight:500}
+.tool.danger{color:var(--danger)}
+.chip{min-height:36px;padding:0 12px;border-radius:18px;border:1.5px solid var(--line);background:transparent;cursor:pointer;font-size:14px;font-weight:600}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip-select{min-height:36px;border-radius:18px;border:1.5px solid var(--line);background:var(--surface);padding:0 10px;font-size:14px;font-weight:600}
+.star{min-width:44px;min-height:44px;border:0;background:transparent;font-size:22px;cursor:pointer;color:var(--muted);border-radius:10px}
+.star.on{color:#c98a00}
+.r-opts .star{font-size:15px;font-weight:600;border:1.5px solid var(--line);padding:0 12px}
+.pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:13px;font-weight:600;background:var(--c,var(--muted));color:var(--surface)}
+.pill.soft{background:var(--soft);color:var(--ink)}
+.pill.ok{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.badge{position:absolute;top:8px;right:8px;font-size:12px;font-weight:600;background:var(--soft);padding:1px 8px;border-radius:10px}
+
+/* figures */
+.fig{display:flex;align-items:center;justify-content:center;color:var(--ink);overflow:hidden}
+.fig svg{width:100%;height:100%}
+.fig polyline{fill:none;stroke:currentColor;stroke-width:5px;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.fig polyline.far{opacity:.38}
+.fig polyline.thin{stroke-width:1.5px;opacity:.7}
+.fig .head{fill:currentColor}
+.fig .mat{fill:var(--c,var(--muted));opacity:.35}
+.fig.thumb polyline{stroke-width:2.5px}
+.fig.big polyline,.pcard.is-cur .fig polyline{stroke-width:7px}
+.fig-img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.fig-empty{color:var(--muted);font-size:13px;text-align:center;padding:8px}
+
+/* accueil */
+.today{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.today-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0}
+.today-row div{display:flex;flex-direction:column}
+.cards{display:grid;gap:12px}
+.rcard{display:grid;grid-template-columns:96px 1fr auto;grid-template-areas:"fig body star" "act act act";gap:6px 12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px}
+.rcard-fig{grid-area:fig;height:68px;background:var(--soft);border-radius:10px}
+.rcard-body{grid-area:body;align-self:center}
+.rcard h3{margin:0;font-size:18px;line-height:1.2}
+.rcard .star{grid-area:star}
+.rcard-actions{grid-area:act;display:grid;grid-template-columns:1fr 2fr;gap:8px}
+.rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 8px 6px 4px}
+.row-main{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;text-align:left;border:0;background:transparent;padding:6px 8px;cursor:pointer;min-height:44px}
+.row-main.static{cursor:default}
+
+/* éditeur */
+.saved{font-size:13px;color:var(--muted);align-self:center;opacity:.7}
+.saved.flash{animation:flash 1.2s}
+@keyframes flash{0%{color:var(--ok);opacity:1}100%{opacity:.7}}
+.title-input{font-family:var(--display);font-size:30px;font-weight:700;border:0;border-bottom:2px solid var(--line);background:transparent;padding:4px 0;width:100%;border-radius:0}
+.title-input:focus{border-color:var(--ink);outline:none}
+.r-opts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.days{display:flex;gap:4px;flex-wrap:wrap}
+.days .chip{min-width:40px;padding:0 8px}
+.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.item{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:12px;padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+.item.fixed{background:var(--soft)}
+.item-main{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:10px}
+.item .thumb{width:52px;height:38px}
+.item-txt{display:flex;flex-direction:column;min-width:0}
+.item-txt strong{overflow-wrap:anywhere;line-height:1.2}
+.item-tools{display:flex;flex-wrap:wrap;gap:6px}
+.dur{display:flex;align-items:center;gap:3px;font-size:13px;color:var(--muted)}
+.dur input{width:46px;height:40px;text-align:center;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);font-weight:600;font-variant-numeric:tabular-nums;-moz-appearance:textfield;padding:0}
+.dur input::-webkit-inner-spin-button,.dur input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.bloc{border:2px dashed var(--line);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.bloc-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stepper{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.stepper button{width:44px;height:42px;border:0;background:transparent;font-size:20px;cursor:pointer}
+.stepper span{min-width:44px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums;padding:0 6px}
+.stepper.sm button{width:38px;height:36px}
+.addcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.addcard label,.lbl{font-size:14px;font-weight:600;display:block;margin-bottom:4px}
+.addrow{display:flex;gap:8px}
+.addrow select{flex:1;min-width:0}
+.addrow2{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
+select{min-height:44px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);padding:0 10px}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.launchbar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:center;gap:12px}
+.launchbar>div{display:flex;flex-direction:column;line-height:1.1}
+.launchbar .tot{font-family:var(--display);font-size:32px;font-variant-numeric:tabular-nums}
+@media (min-width:600px){.launchbar{left:50%;transform:translateX(-50%);max-width:560px;border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0}}
+
+/* bibliothèque */
+.search{min-height:46px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);padding:0 14px;width:100%}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mvcard{position:relative;display:flex;flex-direction:column;gap:2px;text-align:left;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:8px 10px 10px;cursor:pointer}
+.mvfig{height:92px;margin-bottom:4px}
+.mv-name{font-weight:600;line-height:1.2}
+
+/* fiche */
+.fiche-fig{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:14px;height:220px;padding:10px}
+.fiche-fig .fig{height:100%}
+.fiche-title{font-size:40px}
+.vig{background:color-mix(in srgb,var(--c-repos) 12%,var(--surface));border-left:4px solid var(--c-repos);border-radius:10px;padding:10px 12px}
+.vig strong{display:block;font-size:14px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}
+.facts div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.facts dt{font-size:13px;color:var(--muted)}
+.facts dd{margin:0;font-weight:600}
+.btn.yt{border-color:#c4302b;color:#c4302b}
+.source{font-size:13px;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+
+/* formulaire mouvement */
+.form{display:flex;flex-direction:column;gap:14px}
+.fbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.fbox label:not(.check):not(.file){font-size:14px;font-weight:600;margin-top:4px}
+.fbox input:not([type=checkbox]):not([type=file]),.fbox textarea{border:1.5px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;width:100%;min-height:44px}
+.fbox textarea{resize:vertical}
+.fbox .dur input:not([type=checkbox]):not([type=file]){width:56px;min-height:42px;padding:0;text-align:center}
+.check{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:500}
+.check input{width:22px;height:22px;accent-color:var(--ink)}
+.preview{height:180px;background:var(--soft);border-radius:12px;padding:8px}
+.preview .fig{height:100%}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{min-height:42px;border:0;background:transparent;font-weight:600;cursor:pointer;font-size:14px}
+.seg button+button{border-left:1.5px solid var(--line)}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.btn.file{position:relative;overflow:hidden}
+.btn.file input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.medias{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.medias li{display:flex;flex-direction:column;gap:4px}
+.medias img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;background:var(--soft)}
+.media-tools{display:flex;justify-content:space-between}
+.media-tools .tool{min-width:32px;padding:0 6px}
+textarea.code{font-family:ui-monospace,Menlo,monospace;font-size:12px}
+
+/* journal */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stats div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column}
+.stats strong{font-family:var(--display);font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted);line-height:1.25;margin-top:4px}
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.cal-head{display:flex;justify-content:space-between;align-items:center}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-variant-numeric:tabular-nums}
+.cal-dow{font-size:12px;color:var(--muted);font-weight:600;padding:4px 0}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:14px}
+.cal-day.done{background:var(--ok);color:var(--surface);font-weight:600}
+.cal-day.today{box-shadow:inset 0 0 0 2px var(--ink)}
+.sync{padding:8px 10px;border-radius:10px;background:var(--soft);font-size:15px}
+.sync-compte{background:color-mix(in srgb,var(--ok) 14%,transparent)}
+
+/* onglets */
+#tabs{position:fixed;left:0;right:0;bottom:0;z-index:5;display:none;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+body.has-tabs #tabs{display:grid}
+#tabs button{min-height:60px;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer}
+#tabs svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#tabs button.on{color:var(--ink)}
+@media (min-width:600px){#tabs{left:50%;transform:translateX(-50%);max-width:560px;border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0}}
+
+/* dialogue et notification */
+#dlg{position:fixed;inset:0;z-index:30;background:rgba(10,16,14,.5);display:flex;align-items:flex-end;justify-content:center;padding:16px}
+#dlg[hidden]{display:none}
+.dlg-card{background:var(--surface);border-radius:16px;padding:18px;width:100%;max-width:440px;display:flex;flex-direction:column;gap:12px;max-height:90%;overflow:auto}
+.dlg-card h2{margin:0;font-size:20px}
+.dlg-btns{display:flex;flex-direction:column;gap:8px}
+.dlg-btns .btn{width:100%}
+#toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:600;max-width:calc(100% - 32px);text-align:center}
+#toast[hidden]{display:none}
+
+/* lecteur */
+#player{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;--c:var(--c-special)}
+#player[hidden]{display:none}
+#player[data-cat="echauffement"]{--c:var(--c-echauffement)} #player[data-cat="force"]{--c:var(--c-force)} #player[data-cat="flow"]{--c:var(--c-flow)}
+#player[data-cat="etirement"]{--c:var(--c-etirement)} #player[data-cat="repos"]{--c:var(--c-repos)} #player[data-cat="special"]{--c:var(--c-special)}
+.pwrap{flex:1;display:flex;flex-direction:column;max-width:640px;width:100%;margin:0 auto;padding:10px 0 calc(12px + env(safe-area-inset-bottom));min-height:0;gap:8px}
+.ptop{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px}
+.ptop strong{flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+.ptoggles{display:flex;gap:4px}
+.ptoggles button{min-height:38px;padding:0 10px;border-radius:19px;border:1.5px solid var(--line);background:transparent;font-size:13px;font-weight:600;cursor:pointer}
+.ptoggles button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#p-carousel{position:relative;overflow:hidden;flex:1 1 auto;min-height:200px;max-height:440px;touch-action:pan-y}
+#p-track{display:flex;column-gap:12px;height:100%;align-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.pcard{flex:0 0 62%;max-width:340px;height:92%;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:4px;transform:scale(.8);opacity:.35;transition:transform .45s,opacity .45s;cursor:pointer;position:relative}
+.pcard.is-side{opacity:.6}
+.pcard.is-cur{transform:none;opacity:1;cursor:default;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.pcard .pfig{flex:1;min-height:0}
+.pc-txt{display:flex;flex-direction:column;line-height:1.15}
+.pc-txt strong{font-family:var(--display);font-size:22px;font-weight:700;overflow-wrap:anywhere}
+.pc-txt span{font-size:13px;color:var(--muted)}
+.pc-dur{position:absolute;top:8px;right:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pcard.is-cur .pc-txt strong{font-size:26px}
+.pinfo{padding:0 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.ptag{color:var(--c);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.05em;min-height:1.4em}
+.pclock{font-family:var(--display);font-weight:700;font-size:clamp(72px,22vw,110px);line-height:.95;color:var(--c);font-variant-numeric:tabular-nums}
+.pcue{color:var(--muted);max-width:44ch;min-height:2.9em;font-size:15px}
+.pvig{font-size:13px;color:var(--ink);background:color-mix(in srgb,var(--c-repos) 12%,transparent);border-radius:8px;padding:4px 10px;max-width:44ch}
+.pvig[hidden]{display:none}
+.pbars{padding:0 16px;display:flex;flex-direction:column;gap:4px}
+.pbar-lbl{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pbar-lbl b{color:var(--ink);font-weight:600}
+.bar{height:8px;border-radius:4px;background:var(--soft);overflow:hidden;margin-bottom:6px}
+.bar.big{height:12px;border-radius:6px}
+.bar i{display:block;height:100%;width:0;background:var(--c);border-radius:inherit}
+.bar.big i{background:var(--ink)}
+.pctrl{display:grid;grid-template-columns:1fr 2fr 1fr;gap:10px;padding:0 16px}
+.pctrl .btn{min-height:58px}
+.pctrl svg{width:22px;height:22px;fill:currentColor}
+#p-play{font-size:19px}
+#p-play.is-run{background:transparent;color:var(--ink)}
+#p-play .ic-pause{display:none} #p-play.is-run .ic-pause{display:block} #p-play.is-run .ic-play{display:none}
+.pdone{position:absolute;inset:0;background:color-mix(in srgb,var(--bg) 94%,transparent);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+.pdone[hidden]{display:none}
+.pdone h2{margin:0;font-family:var(--display);font-size:44px;text-transform:uppercase;color:var(--ok)}
+.pdone .btnrow{justify-content:center}
+@media (max-height:640px){.pcue{min-height:0}.pclock{font-size:64px}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body class="has-tabs">
+<main id="view" aria-live="polite"><p class="empty" id="boot-msg">Chargement… Si ce message reste affiché, ouvre l'application depuis son lien claude.ai.</p></main>
+
+<nav id="tabs" aria-label="Sections">
+  <button type="button" data-tab="routines"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Routines</button>
+  <button type="button" data-tab="biblio"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2"/><path d="M12 7.5v7M12 14.5l-4 6M12 14.5l4 6M6 10l6-1.5 6 1.5"/></svg>Bibliothèque</button>
+  <button type="button" data-tab="journal"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Journal</button>
+  <button type="button" data-tab="reglages"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Réglages</button>
+</nav>
+
+<section id="player" hidden aria-label="Séance en cours">
+  <div class="pwrap">
+    <header class="ptop">
+      <button type="button" class="btn ghost" id="p-close">Fermer</button>
+      <strong id="p-name"></strong>
+      <div class="ptoggles"><button type="button" id="p-son" aria-pressed="true">Son</button><button type="button" id="p-voix" aria-pressed="false">Voix</button></div>
+    </header>
+    <div id="p-carousel"><div id="p-track"></div></div>
+    <div class="pinfo" aria-live="polite">
+      <p class="ptag" id="p-tag"></p>
+      <div class="pclock" id="p-clock">0</div>
+      <p class="pcue" id="p-cue"></p>
+      <p class="pvig" id="p-vig" hidden></p>
+    </div>
+    <div class="pbars">
+      <div class="pbar-lbl"><span>Exercice</span><span id="p-exrem"></span></div>
+      <div class="bar"><i id="p-exbar"></i></div>
+      <div class="pbar-lbl"><span>Séance · <b id="p-step"></b></span><span><b id="p-el">0:00</b> / <span id="p-tot"></span></span></div>
+      <div class="bar big"><i id="p-allbar"></i></div>
+    </div>
+    <div class="pctrl">
+      <button type="button" class="btn" id="p-prev" aria-label="Exercice précédent"><svg viewBox="0 0 20 20"><path d="M4 3h2v14H4zM17 3v14L7 10z"/></svg></button>
+      <button type="button" class="btn primary" id="p-play"><svg class="ic-play" viewBox="0 0 20 20"><path d="M5 3l12 7-12 7z"/></svg><svg class="ic-pause" viewBox="0 0 20 20"><path d="M5 3h3.5v14H5zM11.5 3H15v14h-3.5z"/></svg><span class="lbl">Pause</span></button>
+      <button type="button" class="btn" id="p-next" aria-label="Exercice suivant"><svg viewBox="0 0 20 20"><path d="M14 3h2v14h-2zM3 3l10 7L3 17z"/></svg></button>
+    </div>
+  </div>
+  <div class="pdone" id="p-done" hidden>
+    <h2>Bravo</h2>
+    <p id="p-done-txt"></p>
+    <div class="btnrow"><button type="button" class="btn" id="p-again">Recommencer</button><button type="button" class="btn primary" id="p-quit">Terminer</button></div>
+  </div>
+</section>
+
+<div id="dlg" hidden></div>
+<div id="toast" role="status" hidden></div>
+
+<!-- Scripts intégrés à la construction depuis js/ et bibliotheque/bundle.js, pour que la page marche aussi ouverte seule. -->
+<script>/* --- bibliotheque/bundle.js --- */
+/* Copie de secours générée à partir des fichiers JSON de ce dossier. Ne pas modifier à la main. */
+window.BIBLIO_BUNDLE = {"index":{"version":1,"maj":"2026-11-12","mouvements":["depart.json","fin.json","repos.json","chatvache.json","birddog.json","pont.json","poignets.json","hanches.json","pompes.json","pompes-inclinees.json","squats.json","rowing.json","deadbug.json","gainage.json","gainage-lateral.json","ape.json","beast.json","crab.json","marche-genoux.json","curlup.json","beast-touches.json","grimpeur.json","pallof.json","etirement-lateral.json","fente.json","ischios.json","enfant.json"]},"mouvements":[{"id":"depart","nom":"Départ","categorie":"special","duree":10,"cotes":false,"description":"Compte à rebours avant le premier exercice.","consigne":"Installe-toi sur le tapis et prends la première position.","vigilance":"","zones":[],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,103,30,106,52]],"f":[],"t":[]},{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,104,30,108,52]],"f":[],"t":[]}]}},{"id":"fin","nom":"Fin","categorie":"special","duree":5,"cotes":false,"description":"Fin de la séance.","consigne":"Bravo. Respire calmement et bois un verre d'eau.","vigilance":"","zones":[],"niveau":"debutant","materiel":[],"dos":true,"youtube":"","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,104,30,108,52]],"f":[],"t":[]},{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,110,-14,118,-36]],"f":[],"t":[]}]}},{"id":"repos","nom":"Repos","categorie":"repos","duree":20,"cotes":false,"description":"Récupération entre deux exercices.","consigne":"Respire lentement par le nez, relâche les épaules.","vigilance":"","zones":[],"niveau":"debutant","materiel":[],"dos":true,"youtube":"","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,102,30,104,52]],"f":[],"t":[]},{"h":[100,-11],"n":[[100,3,100,-11],[100,49,100,26,100,3],[100,121,100,85,100,49],[100,6,106,28,110,50]],"f":[],"t":[]}]}},{"id":"chatvache","nom":"Chat-vache","categorie":"echauffement","duree":60,"cotes":false,"description":"Mobilise toute la colonne en douceur, en alternant dos rond et dos creusé.","consigne":"À quatre pattes : dos rond en expirant, dos légèrement creusé en inspirant. 10 répétitions lentes.","vigilance":"Amplitude douce : ne force pas la cambrure en bas du dos.","zones":["dos","tronc"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=chat+vache+exercice+dos+tutoriel","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[138,66],"n":[[124,76,138,66],[80,80,102,88,124,76],[124,76,124,121],[80,80,80,121,42,121]],"f":[[116,78,116,121],[88,82,88,121,50,121]],"t":[]},{"h":[136,90],"n":[[124,76,136,90],[80,80,102,66,124,76],[124,76,124,121],[80,80,80,121,42,121]],"f":[[116,78,116,121],[88,82,88,121,50,121]],"t":[]}]}},{"id":"birddog","nom":"Bird-dog","categorie":"echauffement","duree":60,"cotes":false,"description":"Gainage dynamique qui apprend au tronc à stabiliser la colonne pendant que les membres bougent.","consigne":"À quatre pattes, tends un bras et la jambe opposée, tiens 2 secondes, puis change de côté.","vigilance":"Le bassin ne tourne pas et le dos ne se creuse pas. Mieux vaut lever moins haut.","zones":["tronc","dos","fessiers"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=bird+dog+exercice+tutoriel","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[138,70],"n":[[124,76,138,70],[80,80,102,78,124,76],[124,76,124,98,124,121],[80,80,80,121,42,121]],"f":[[116,78,116,121],[88,82,88,121,50,121]],"t":[]},{"h":[138,70],"n":[[124,76,138,70],[80,80,102,78,124,76],[124,76,150,76,176,76],[80,80,47,80,14,80]],"f":[[116,78,116,121],[88,82,88,121,50,121]],"t":[]}]}},{"id":"pont","nom":"Pont fessier","categorie":"echauffement","duree":60,"cotes":false,"description":"Réveille les fessiers, qui soulagent le bas du dos.","consigne":"Sur le dos, genoux fléchis. Monte le bassin en serrant les fessiers, redescends lentement.","vigilance":"En haut, ne creuse pas le bas du dos : c'est le fessier qui pousse.","zones":["fessiers","ischios"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=pont+fessier+exercice+tutoriel","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[30,110],"n":[[50,117,30,110],[50,117,72,117,94,117],[50,119,70,119,90,119],[94,117,118,88,132,121]],"f":[[94,117,124,88,138,121]],"t":[]},{"h":[30,110],"n":[[50,117,30,110],[50,117,69,107,88,97],[50,119,70,119,90,119],[88,97,122,86,132,121]],"f":[[88,97,128,86,138,121]],"t":[]}]}},{"id":"poignets","nom":"Mobilité des poignets","categorie":"echauffement","duree":60,"cotes":false,"description":"Prépare les poignets aux appuis au sol de l'Animal Flow.","consigne":"À quatre pattes, mains à plat. Balance-toi doucement d'avant en arrière.","vigilance":"Reste dans une zone sans douleur.","zones":["poignets"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=mobilit%C3%A9+poignets+%C3%A9chauffement","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[134,68],"n":[[118,78,134,68],[74,82,96,80,118,78],[118,78,121,100,124,121],[74,82,74,121,36,121]],"f":[[110,80,114,100,118,121],[82,84,82,121,44,121]],"t":[]},{"h":[148,66],"n":[[132,76,148,66],[88,80,110,78,132,76],[132,76,128,98,124,121],[88,80,88,121,50,121]],"f":[[124,78,121,100,118,121],[96,82,96,121,58,121]],"t":[]}]}},{"id":"hanches","nom":"Cercles de hanches","categorie":"echauffement","duree":60,"cotes":false,"description":"Mobilise les hanches à quatre pattes.","consigne":"À quatre pattes, dessine de petits cercles avec le bassin, 5 dans chaque sens.","vigilance":"Petits cercles, sans forcer la rotation du bas du dos.","zones":["hanches","dos"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=cercles+de+hanches+quatre+pattes+mobilit%C3%A9","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[138,66],"n":[[124,76,138,66],[74,84,99,80,124,76],[124,76,124,98,124,121],[74,84,74,121,36,121]],"f":[[116,78,116,100,116,121],[82,86,82,121,44,121]],"t":[]},{"h":[138,66],"n":[[124,76,138,66],[88,76,106,76,124,76],[124,76,124,98,124,121],[88,76,88,121,50,121]],"f":[[116,78,116,100,116,121],[96,78,96,121,58,121]],"t":[]}]}},{"id":"pompes","nom":"Pompes","categorie":"force","duree":40,"cotes":false,"description":"Renforce pectoraux, épaules et bras, avec un gros travail de gainage.","consigne":"Corps gainé. Descends la poitrine vers le sol, repousse. Garde 2 répétitions en réserve.","vigilance":"Ne laisse pas tomber le bassin : le corps reste droit comme une planche.","zones":["pectoraux","bras","épaules","tronc"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=pompes+technique+d%C3%A9butant","variantes":{"facile":"pompes-inclinees","difficile":null},"animation":{"type":"baton","images":[{"h":[152,65],"n":[[136,75,152,65],[26,119,81,97,136,75],[136,75,136,98,136,121]],"f":[],"t":[]},{"h":[152,103],"n":[[136,108,152,103],[26,119,81,113.5,136,108],[136,108,114,104,136,121]],"f":[],"t":[]}]}},{"id":"pompes-inclinees","nom":"Pompes inclinées","categorie":"force","duree":40,"cotes":false,"description":"Version plus facile des pompes, mains surélevées.","consigne":"Mains sur un meuble stable ou un plan de travail. Descends la poitrine vers le bord, repousse.","vigilance":"Vérifie que le support ne glisse pas. Corps gainé.","zones":["pectoraux","bras","épaules"],"niveau":"debutant","materiel":["meuble"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=pompes+inclin%C3%A9es+d%C3%A9butant","variantes":{"facile":null,"difficile":"pompes"},"animation":{"type":"baton","images":[{"h":[148,54],"n":[[134,62,148,54],[34,121,84,92,134,62],[134,62,134,85,134,108]],"f":[],"t":[[116,108,152,108],[148,108,148,121],[120,108,120,121]]},{"h":[152,80],"n":[[138,88,152,80],[34,121,86,105,138,88],[138,88,120,96,134,108]],"f":[],"t":[[116,108,152,108],[148,108,148,121],[120,108,120,121]]}]}},{"id":"squats","nom":"Squats","categorie":"force","duree":40,"cotes":false,"description":"Le mouvement de base pour les cuisses et les fessiers.","consigne":"Pieds largeur d'épaules. Descends comme pour t'asseoir, jusqu'aux cuisses parallèles au sol.","vigilance":"Dos droit, genoux dans l'axe des pieds. Réduis la profondeur si le bas du dos s'arrondit.","zones":["cuisses","fessiers"],"niveau":"debutant","materiel":[],"dos":true,"youtube":"https://www.youtube.com/results?search_query=squat+poids+du+corps+technique+d%C3%A9butant","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,124,8,148,8]],"f":[],"t":[]},{"h":[115,41],"n":[[107,55,115,41],[82,91,95,73,107,55],[100,121,116,87,82,91],[107,58,131,58,155,58]],"f":[],"t":[]}]}},{"id":"rowing","nom":"Rowing élastique","categorie":"force","duree":40,"cotes":false,"description":"Renforce le haut du dos et corrige la posture.","consigne":"Assis, jambes tendues, élastique autour des pieds. Tire les coudes vers l'arrière, omoplates serrées.","vigilance":"Dos droit, sans te pencher en arrière pour tirer.","zones":["dos","bras","épaules"],"niveau":"debutant","materiel":["tapis","elastique"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=rowing+assis+%C3%A9lastique+exercice","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[50,59],"n":[[50,73,50,59],[50,117,50,95,50,73],[50,117,86,117,122,117],[50,76,73,78,96,80]],"f":[],"t":[[96,80,122,115]]},{"h":[44,59],"n":[[46,73,44,59],[50,117,48,95,46,73],[50,117,86,117,122,117],[46,76,30,90,56,92]],"f":[],"t":[[56,92,122,115]]}]}},{"id":"deadbug","nom":"Dead bug","categorie":"force","duree":40,"cotes":false,"description":"Gainage sur le dos qui renforce les abdominaux profonds sans flexion de la colonne.","consigne":"Sur le dos, bras et genoux en l'air. Descends lentement un bras et la jambe opposée, puis change.","vigilance":"Le bas du dos reste collé au sol. S'il décolle, réduis l'amplitude.","zones":["tronc"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=dead+bug+exercice+tutoriel","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[30,108],"n":[[48,116,30,108],[48,116,70,116,92,116],[48,116,48,94,48,70],[92,116,92,80,128,80]],"f":[[54,116,54,94,54,70],[98,116,98,80,134,80]],"t":[]},{"h":[30,108],"n":[[48,116,30,108],[48,116,70,116,92,116],[48,116,26,119,4,120],[92,116,92,80,128,80]],"f":[[54,116,54,94,54,70],[98,116,134,112,170,108]],"t":[]}]}},{"id":"gainage","nom":"Gainage planche","categorie":"force","duree":30,"cotes":false,"description":"Gainage statique sur les avant-bras.","consigne":"Avant-bras au sol, coudes sous les épaules, corps droit des talons à la tête. Respire.","vigilance":"Bassin aligné, ni trop haut ni affaissé. Commence par 15 à 20 secondes.","zones":["tronc","épaules"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=gainage+planche+technique+d%C3%A9butant","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[154,92],"n":[[138,99,154,92],[24,118,81,108,138,99],[138,99,138,121,162,121]],"f":[],"t":[]},{"h":[154,91],"n":[[138,98,154,91],[24,118,81,106,138,98],[138,98,138,121,162,121]],"f":[],"t":[]}]}},{"id":"gainage-lateral","nom":"Gainage latéral","categorie":"force","duree":20,"cotes":true,"description":"Renforce les muscles latéraux du tronc, très utiles pour protéger le bas du dos.","consigne":"Sur le côté, avant-bras au sol sous l'épaule. Monte le bassin, corps aligné.","vigilance":"Variante facile : genoux fléchis au sol.","zones":["tronc","hanches"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=gainage+lat%C3%A9ral+d%C3%A9butant+genoux","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[146,70],"n":[[132,80,146,70],[30,119,81,100,132,80],[132,80,130,104,150,121],[132,80,112,90,94,96]],"f":[],"t":[]},{"h":[146,70],"n":[[132,80,146,70],[30,119,81,100,132,80],[132,80,130,104,150,121],[132,80,134,56,136,32]],"f":[],"t":[]}]}},{"id":"ape","nom":"Ape","categorie":"flow","duree":20,"cotes":false,"description":"Position Animal Flow du singe : accroupi profond, mains au sol.","consigne":"Accroupi, mains au sol entre les pieds, dos le plus droit possible.","vigilance":"Descends seulement là où c'est confortable pour le dos.","zones":["hanches","cuisses","épaules"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=animal+flow+ape+tutorial","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[121,57],"n":[[108,70,121,57],[80,100,94,85,108,70],[108,70,112,96,116,121],[96,121,116,88,80,100]],"f":[],"t":[]},{"h":[119,51],"n":[[106,66,119,51],[80,96,93,81,106,66],[106,66,112,94,116,121],[96,121,116,86,80,96]],"f":[],"t":[]}]}},{"id":"beast","nom":"Beast","categorie":"flow","duree":20,"cotes":false,"description":"Position de base de l'Animal Flow : la bête.","consigne":"À quatre pattes, genoux décollés de quelques centimètres, dos plat.","vigilance":"Dos plat, genoux juste au-dessus du sol.","zones":["épaules","tronc","cuisses"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=animal+flow+beast+tutorial","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[138,62],"n":[[124,72,138,62],[80,72,102,72,124,72],[124,72,124,96,124,121],[80,72,84,108,50,121]],"f":[[116,74,116,98,116,121],[88,72,92,108,58,121]],"t":[]},{"h":[138,62],"n":[[124,72,138,62],[80,72,102,72,124,72],[124,72,124,96,124,121],[80,72,84,112,50,121]],"f":[[116,74,116,98,116,121],[88,72,92,112,58,121]],"t":[]}]}},{"id":"crab","nom":"Crab reach","categorie":"flow","duree":25,"cotes":true,"description":"Ouvre l'avant du corps et les épaules, depuis la position du crabe.","consigne":"Assis, mains derrière toi, bassin levé. Un bras passe au-dessus de la tête en tournant le buste.","vigilance":"Rotation modérée : ne force pas la torsion du bas du dos.","zones":["épaules","hanches","tronc"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=animal+flow+crab+reach+tutorial","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[39,70],"n":[[54,80,39,70],[54,80,76,82,98,84],[54,80,50,100,48,121],[98,84,132,85,130,121]],"f":[[62,82,58,102,56,121],[104,86,138,87,136,121]],"t":[]},{"h":[38,66],"n":[[54,78,38,66],[54,78,76,79,98,81],[54,78,60,56,88,42],[98,81,132,82,130,121]],"f":[[62,82,58,102,56,121],[104,83,138,84,136,121]],"t":[]}]}},{"id":"marche-genoux","nom":"Marche genoux hauts","categorie":"echauffement","duree":60,"cotes":false,"description":"Cardio doux, sans impact : fait monter le cœur et réveille les hanches.","consigne":"Debout, monte un genou à hauteur de hanche puis l'autre, bras opposés qui balancent. Rythme soutenu, sans sauter.","vigilance":"Buste droit. On marche sur place, on ne saute pas.","zones":["cuisses","hanches","tronc"],"niveau":"debutant","materiel":[],"dos":true,"youtube":"https://www.youtube.com/results?search_query=marche+sur+place+genoux+hauts+sans+impact","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,49,136,49,136,85],[100,8,90,30,84,50]],"f":[[100,121,100,85,100,49],[100,8,112,28,124,40]],"t":[]},{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,100,85,100,49],[100,8,112,28,124,40]],"f":[[100,49,136,49,136,85],[100,8,90,30,84,50]],"t":[]}]}},{"id":"curlup","nom":"Curl-up McGill","categorie":"force","duree":40,"cotes":false,"description":"La version du crunch conçue par Stuart McGill : elle travaille les grands droits, les « tablettes », sans enrouler le bas du dos.","consigne":"Sur le dos, une jambe pliée, l'autre tendue, mains sous le creux des reins. Décolle tête et épaules de quelques centimètres d'un bloc, tiens 8 à 10 secondes, redescends. Change de jambe à mi-temps.","vigilance":"Ne rentre pas le menton et n'écrase pas le dos sur les mains : le mouvement est minuscule.","zones":["tronc"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=McGill+curl+up+modifi%C3%A9+tutoriel","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[30,110],"n":[[48,116,30,110],[48,116,70,116,92,116],[92,116,114,88,134,119],[48,116,62,121,80,119]],"f":[[92,116,128,118,164,120]],"t":[]},{"h":[34,99],"n":[[50,108,34,99],[50,108,71,114,92,116],[92,116,114,88,134,119],[50,108,62,119,80,119]],"f":[[92,116,128,118,164,120]],"t":[]}]}},{"id":"beast-touches","nom":"Beast · touches d'épaule","categorie":"force","duree":40,"cotes":false,"description":"Gainage anti-rotation en position Animal Flow : les obliques empêchent le bassin de tourner.","consigne":"En position Beast, genoux décollés. Touche l'épaule opposée avec une main, repose-la, change. Lentement.","vigilance":"Le bassin ne tangue pas : écarte un peu les pieds si besoin.","zones":["tronc","épaules"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=bear+plank+shoulder+taps+tutorial","variantes":{"facile":"beast","difficile":"pallof"},"animation":{"type":"baton","images":[{"h":[138,62],"n":[[124,72,138,62],[80,72,102,72,124,72],[124,72,124,96,124,121],[80,72,84,108,50,121]],"f":[[116,74,116,98,116,121],[88,72,92,108,58,121]],"t":[]},{"h":[138,62],"n":[[124,72,138,62],[80,72,102,72,124,72],[124,72,138,88,124,76],[80,72,84,108,50,121]],"f":[[116,74,116,98,116,121],[88,72,92,108,58,121]],"t":[]}]}},{"id":"grimpeur","nom":"Grimpeur lent","categorie":"force","duree":40,"cotes":false,"description":"Gainage dynamique qui fait aussi monter le cœur : utile pour dépenser plus pendant la séance.","consigne":"En planche haute, mains sous les épaules. Amène un genou vers la poitrine, repose, change. Rythme régulier, sans sauter.","vigilance":"Bassin à hauteur des épaules, dos plat. Ralentis si le bas du dos se creuse.","zones":["tronc","épaules","cuisses"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=mountain+climber+lent+d%C3%A9butant","variantes":{"facile":"gainage","difficile":null},"animation":{"type":"baton","images":[{"h":[152,65],"n":[[136,75,152,65],[81,97,108,86,136,75],[136,75,136,98,136,121],[81,97,53,108,26,119]],"f":[[81,97,110,104,94,121]],"t":[]},{"h":[152,65],"n":[[136,75,152,65],[81,97,108,86,136,75],[136,75,136,98,136,121],[81,97,110,104,94,121]],"f":[[81,97,53,108,26,119]],"t":[]}]}},{"id":"pallof","nom":"Pallof press","categorie":"force","duree":30,"cotes":true,"description":"L'exercice de référence pour les obliques en anti-rotation, avec ton élastique.","consigne":"Élastique attaché sur le côté à hauteur de poitrine. Debout de profil, tiens-le contre la poitrine, tends les bras devant toi sans laisser le buste tourner, tiens 2 secondes, reviens.","vigilance":"Bassin et épaules restent face à l'avant. Genoux légèrement fléchis.","zones":["tronc"],"niveau":"debutant","materiel":["elastique"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=pallof+press+%C3%A9lastique+tutoriel","variantes":{"facile":"beast-touches","difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,102,85,100,49],[100,8,114,18,108,26]],"f":[],"t":[[108,26,22,28]]},{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,121,102,85,100,49],[100,8,123,10,146,12]],"f":[],"t":[[146,12,22,28]]}]}},{"id":"etirement-lateral","nom":"Étirement latéral debout","categorie":"etirement","duree":20,"cotes":true,"description":"Étire les flancs, les obliques et le carré des lombes.","consigne":"Debout, pieds écartés. Lève un bras et penche-toi doucement du côté opposé, sans tourner le buste. Respire.","vigilance":"Amplitude douce, sans rebond. Stoppe si ça tire dans le bas du dos ou dans la jambe.","zones":["tronc","dos"],"niveau":"debutant","materiel":[],"dos":true,"youtube":"https://www.youtube.com/results?search_query=%C3%A9tirement+lat%C3%A9ral+debout+obliques","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[100,-9],"n":[[100,5,100,-9],[100,49,100,27,100,5],[100,49,88,85,82,121],[100,49,112,85,118,121],[92,8,88,-14,86,-36],[108,8,110,30,112,52]],"f":[],"t":[]},{"h":[121,-4],"n":[[111,7,121,-4],[100,49,104,28,111,7],[100,49,88,85,82,121],[100,49,112,85,118,121],[104,8,110,-16,130,-30],[116,10,120,31,122,53]],"f":[],"t":[]}]}},{"id":"fente","nom":"Fente basse","categorie":"etirement","duree":45,"cotes":true,"description":"Étire l'avant de la hanche, souvent raide quand on est assis longtemps.","consigne":"Un genou au sol. Avance doucement le bassin pour étirer l'avant de la hanche.","vigilance":"Buste droit, sans cambrer le bas du dos.","zones":["hanches"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=%C3%A9tirement+fente+basse+fl%C3%A9chisseurs+de+hanche","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[104,33],"n":[[104,48,104,33],[104,92,104,70,104,48],[104,50,118,68,132,86],[104,92,140,86,140,121],[104,92,84,121,50,121]],"f":[],"t":[]},{"h":[110,35],"n":[[110,50,110,35],[110,94,110,72,110,50],[110,52,122,70,134,88],[110,94,140,88,140,121],[110,94,92,121,58,121]],"f":[],"t":[]}]}},{"id":"ischios","nom":"Ischios sur le dos","categorie":"etirement","duree":45,"cotes":true,"description":"Étire l'arrière des cuisses sans charger le dos. C'est l'étirement clé pour toucher tes pieds.","consigne":"Sur le dos, serviette sous le pied, tends la jambe vers le plafond.","vigilance":"Le bas du dos reste au sol. Stoppe si ça tire jusque dans le pied.","zones":["ischios"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=%C3%A9tirement+ischio+jambiers+allong%C3%A9+serviette","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[31,110],"n":[[48,116,31,110],[48,116,70,116,92,116],[48,116,58,98,68,84],[92,116,98,81,104,46]],"f":[[98,116,134,118,168,120]],"t":[[68,84,104,46]]},{"h":[31,110],"n":[[48,116,31,110],[48,116,70,116,92,116],[48,116,58,98,68,84],[92,116,86,81,80,46]],"f":[[98,116,134,118,168,120]],"t":[[68,84,80,46]]}]}},{"id":"enfant","nom":"Posture de l'enfant","categorie":"etirement","duree":45,"cotes":false,"description":"Relâche le dos et les hanches en fin de séance.","consigne":"Assis sur les talons, bras allongés devant toi, front vers le sol. Respire lentement.","vigilance":"Écarte les genoux si le ventre gêne.","zones":["dos","hanches"],"niveau":"debutant","materiel":["tapis"],"dos":true,"youtube":"https://www.youtube.com/results?search_query=posture+de+l'enfant+yoga+tutoriel","variantes":{"facile":null,"difficile":null},"animation":{"type":"baton","images":[{"h":[112,111],"n":[[96,106,112,111],[50,92,74,98,96,106],[50,92,86,119,36,119],[96,108,117,113,138,118]],"f":[],"t":[]},{"h":[112,114],"n":[[96,109,112,114],[48,94,72,101,96,109],[48,94,86,119,36,119],[96,111,117,115,138,119]],"f":[],"t":[]}]}}],"routines":{"version":1,"routines":[{"id":"routine-a","nom":"Routine A · Force","fav":true,"jours":[1,3,5],"depart":10,"fin":5,"items":[{"mv":"chatvache","dur":60},{"mv":"birddog","dur":60},{"mv":"pont","dur":60},{"bloc":true,"rounds":2,"items":[{"mv":"pompes","dur":40},{"mv":"repos","dur":20},{"mv":"squats","dur":40},{"mv":"repos","dur":20},{"mv":"rowing","dur":40},{"mv":"repos","dur":20},{"mv":"deadbug","dur":40},{"mv":"repos","dur":20}]},{"mv":"fente","dur":45},{"mv":"ischios","dur":45},{"mv":"enfant","dur":45}]},{"id":"routine-b","nom":"Routine B · Animal Flow","fav":true,"jours":[2,4],"depart":10,"fin":5,"items":[{"mv":"poignets","dur":60},{"mv":"chatvache","dur":60},{"mv":"hanches","dur":60},{"bloc":true,"rounds":4,"items":[{"mv":"ape","dur":20},{"mv":"beast","dur":20},{"mv":"crab","dur":25},{"mv":"beast","dur":20},{"mv":"repos","dur":5}]},{"mv":"fente","dur":45},{"mv":"ischios","dur":45},{"mv":"enfant","dur":45}]},{"id":"routine-c","nom":"Routine C · Ventre et obliques","fav":true,"jours":[],"depart":10,"fin":5,"items":[{"mv":"chatvache","dur":45},{"mv":"birddog","dur":45},{"mv":"marche-genoux","dur":60},{"bloc":true,"rounds":3,"items":[{"mv":"curlup","dur":40},{"mv":"repos","dur":15},{"mv":"gainage-lateral","dur":20},{"mv":"repos","dur":15},{"mv":"pallof","dur":20},{"mv":"repos","dur":15},{"mv":"grimpeur","dur":40},{"mv":"repos","dur":15}]},{"mv":"enfant","dur":45},{"mv":"etirement-lateral","dur":20}]}]}};
+
+</script>
+<script>/* --- js/figure.js --- */
+"use strict";
+/* Affichage d'un mouvement : bonhomme bâton animé, photos qui alternent ou GIF. */
+window.Figure = (function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var live = new Set();
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var api = {
+    resolve: function () { return null; },          /* id -> mouvement, fourni par l'appli */
+    mediaUrl: function () { return Promise.resolve(null); } /* ref média -> url, fourni par l'appli */
+  };
+
+  function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+
+  function fitBox(frames) {
+    var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    frames.forEach(function (fr) {
+      ["n", "f", "t"].forEach(function (g) {
+        (fr[g] || []).forEach(function (l) {
+          for (var k = 0; k < l.length; k += 2) {
+            x0 = Math.min(x0, l[k]); x1 = Math.max(x1, l[k]);
+            y0 = Math.min(y0, l[k + 1]); y1 = Math.max(y1, l[k + 1]);
+          }
+        });
+      });
+      x0 = Math.min(x0, fr.h[0] - 9); x1 = Math.max(x1, fr.h[0] + 9);
+      y0 = Math.min(y0, fr.h[1] - 9); y1 = Math.max(y1, fr.h[1] + 9);
+    });
+    y1 = Math.max(y1, 132); x0 -= 12; x1 += 12; y0 -= 8;
+    var w = x1 - x0, h = y1 - y0, r = 200 / 140;
+    if (w / h < r) { var nw = h * r; x0 -= (nw - w) / 2; w = nw; } else { var nh = w / r; y0 -= (nh - h); h = nh; }
+    return { x: x0, y: y0, w: w, h: h };
+  }
+
+  /* Trouve les images du bonhomme d'un mouvement (directes ou par référence). */
+  function batonFrames(mv, depth) {
+    if (!mv || !mv.animation || depth > 4) return null;
+    var a = mv.animation;
+    if (a.type === "baton" && a.images && a.images.length) return a.images;
+    if (a.type === "baton" && a.ref) return batonFrames(api.resolve(a.ref), (depth || 0) + 1);
+    if (a.type === "medias" && a.ref) return batonFrames(api.resolve(a.ref), (depth || 0) + 1);
+    return null;
+  }
+
+  function mountBaton(host, frames, handle) {
+    var B = fitBox(frames), K = B.w / 200;
+    var svg = el("svg", { viewBox: [B.x, B.y, B.w, B.h].map(function (v) { return v.toFixed(1); }).join(" "), "aria-hidden": "true", "class": "fig-svg" });
+    svg.appendChild(el("rect", { "class": "mat", x: (B.x + 4).toFixed(1), y: 123, width: (B.w - 8).toFixed(1), height: (6 * K).toFixed(1), rx: (3 * K).toFixed(1) }));
+    var parts = [];
+    [["f", "far"], ["t", "thin"], ["n", "near"]].forEach(function (g) {
+      (frames[0][g[0]] || []).forEach(function (_, i) { var p = el("polyline", { "class": g[1] }); svg.appendChild(p); parts.push({ g: g[0], i: i, el: p }); });
+    });
+    var head = el("circle", { "class": "head", r: (9 * K).toFixed(1) });
+    svg.appendChild(head);
+    host.appendChild(svg);
+    var a = frames[0], b = frames[1] || frames[0];
+    function draw(u) {
+      parts.forEach(function (p) {
+        var x = a[p.g][p.i], y = (b[p.g] && b[p.g][p.i]) || x, pts = [];
+        for (var k = 0; k < x.length; k += 2) pts.push((x[k] + (y[k] - x[k]) * u).toFixed(1) + "," + (x[k + 1] + (y[k + 1] - x[k + 1]) * u).toFixed(1));
+        p.el.setAttribute("points", pts.join(" "));
+      });
+      head.setAttribute("cx", (a.h[0] + (b.h[0] - a.h[0]) * u).toFixed(1));
+      head.setAttribute("cy", (a.h[1] + (b.h[1] - a.h[1]) * u).toFixed(1));
+    }
+    draw(0);
+    handle.tick = function (ts) { draw(reduce ? 0 : (1 - Math.cos(ts / 2600 * 2 * Math.PI)) / 2); };
+  }
+
+  function mountMedias(host, refs, handle) {
+    var img = document.createElement("img");
+    img.alt = ""; img.className = "fig-img"; img.decoding = "async";
+    host.appendChild(img);
+    var urls = [];
+    Promise.all(refs.map(function (r) { return api.mediaUrl(r).catch(function () { return null; }); })).then(function (list) {
+      urls = list.filter(Boolean);
+      if (!urls.length) { host.innerHTML = ""; placeholder(host, "Photo introuvable"); return; }
+      img.src = urls[0];
+    });
+    var cur = 0;
+    handle.tick = function (ts) {
+      if (urls.length < 2 || reduce) return;
+      var i = Math.floor(ts / 1300) % urls.length;
+      if (i !== cur) { cur = i; img.src = urls[i]; }
+    };
+  }
+
+  function placeholder(host, text) {
+    var d = document.createElement("div");
+    d.className = "fig-empty"; d.textContent = text || "Pas de visuel";
+    host.appendChild(d);
+  }
+
+  /* Monte le visuel d'un mouvement dans host. Renvoie un objet dont on règle .active. */
+  function mount(host, mv, opts) {
+    opts = opts || {};
+    host.innerHTML = "";
+    var handle = { host: host, active: opts.animate !== false, tick: function () {} };
+    var a = mv && mv.animation;
+    if (a && a.type === "medias" && a.medias && a.medias.length) mountMedias(host, a.medias, handle);
+    else {
+      var fr = batonFrames(mv, 0);
+      if (fr) mountBaton(host, fr, handle);
+      else placeholder(host, mv ? "Pas de visuel" : "Mouvement introuvable");
+    }
+    live.add(handle);
+    return handle;
+  }
+
+  function loop(ts) {
+    live.forEach(function (h) {
+      if (!h.host.isConnected) { live.delete(h); return; }
+      if (h.active) h.tick(ts);
+    });
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  api.mount = mount;
+  api.fitBox = fitBox;
+  api.hasBaton = function (mv) { return !!batonFrames(mv, 0); };
+  return api;
+})();
+
+</script>
+<script>/* --- js/store.js --- */
+"use strict";
+/* Données : bibliothèque (fichiers), routines, mouvements perso, journal, préférences.
+   Enregistrement local immédiat, puis synchronisation avec le compte quand la page le permet. */
+window.CAL = window.CAL || {};
+(function (C) {
+  var LS = {
+    get: function (k, d) { try { var v = localStorage.getItem("cal:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem("cal:" + k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  };
+  C.LS = LS;
+
+  var S = C.state = {
+    base: {}, baseRoutines: [], source: "", loaded: false,
+    routines: LS.get("routines", null),
+    mouvements: LS.get("mouvements", {}),       /* perso et versions modifiées, par id */
+    journal: LS.get("journal", []),
+    prefs: Object.assign({ son: true, voix: false, vibration: true, objectif: 5 }, LS.get("prefs", {})),
+    sync: "local"                                /* local | connexion | compte */
+  };
+
+  /* ---------- événements ---------- */
+  var listeners = [];
+  C.on = function (fn) { listeners.push(fn); };
+  function emit(kind) { listeners.forEach(function (fn) { try { fn(kind); } catch (e) { console.error(e); } }); }
+  C.emit = emit;
+
+  /* ---------- bibliothèque ---------- */
+  C.mv = function (id) { return S.mouvements[id] || S.base[id] || null; };
+  C.allMv = function () {
+    var ids = {}; Object.keys(S.base).forEach(function (k) { ids[k] = 1; }); Object.keys(S.mouvements).forEach(function (k) { ids[k] = 1; });
+    return Object.keys(ids).map(C.mv).filter(Boolean);
+  };
+  C.origin = function (id) { var m = S.mouvements[id]; return m ? (S.base[id] ? "modifie" : "perso") : (S.base[id] ? "base" : "absent"); };
+
+  C.loadLibrary = function () {
+    function viaFiles() {
+      return fetch("bibliotheque/index.json", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error("index"); return r.json(); }).then(function (idx) {
+        return Promise.all(idx.mouvements.map(function (f) {
+          return fetch("bibliotheque/" + f, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error(f); return r.json(); });
+        })).then(function (list) {
+          return fetch("routines/routines-de-base.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : { routines: [] }; }).then(function (rt) {
+            return { mouvements: list, routines: rt.routines || [], source: "fichiers" };
+          });
+        });
+      });
+    }
+    function viaBundle() {
+      var b = window.BIBLIO_BUNDLE;
+      if (!b) throw new Error("bundle");
+      return { mouvements: b.mouvements, routines: b.routines.routines, source: "copie intégrée" };
+    }
+    return viaFiles().catch(viaBundle).then(function (res) {
+      S.base = {}; res.mouvements.forEach(function (m) { S.base[m.id] = m; });
+      S.baseRoutines = res.routines; S.source = res.source; S.loaded = true;
+      if (S.routines == null) { S.routines = clone(S.baseRoutines).map(stamp); LS.set("routines", S.routines); }
+    });
+  };
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  C.clone = clone;
+  function stamp(r, i) { r.cree = r.cree || Date.now() + (i || 0); r.maj = r.maj || r.cree; return r; }
+
+  /* ---------- synchronisation compte ---------- */
+  var db = null, assets = null, downloads = null;
+  var queue = {};   /* chemin -> {timer, busy, next} */
+
+  function useCap(name) {
+    try { return (window.claude && window.claude.use) ? Promise.resolve(window.claude.use(name)).catch(function () { return null; }) : Promise.resolve(null); }
+    catch (e) { return Promise.resolve(null); }
+  }
+
+  function write(path, body) {
+    if (!db) return;
+    var q = queue[path] || (queue[path] = { timer: null, busy: false, next: undefined });
+    q.next = body;
+    clearTimeout(q.timer);
+    q.timer = setTimeout(function () { flush(path); }, 500);
+  }
+  function flush(path) {
+    var q = queue[path]; if (!q || q.busy || q.next === undefined) return;
+    var body = q.next; q.next = undefined; q.busy = true;
+    var ref = db.doc(path);
+    var op = body === null ? ref.delete() : ref.set(body);
+    op.catch(function (e) {
+      if (e && e.code === "unavailable") return new Promise(function (r) { setTimeout(r, 800 + Math.random() * 800); }).then(function () { return body === null ? ref.delete() : ref.set(body); });
+      throw e;
+    }).catch(function (e) {
+      console.warn("sync", path, e);
+      emit({ type: "erreur", message: e && e.code === "quota_exceeded" ? "Espace du compte plein : supprime d'anciennes photos ou routines." : "Synchronisation impossible pour l'instant. C'est enregistré sur cet appareil." });
+    }).then(function () { q.busy = false; if (q.next !== undefined) flush(path); });
+  }
+
+  function monthKey(t) { var d = new Date(t); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0"); }
+  function pushJournalMonth(key) {
+    var ent = S.journal.filter(function (e) { return monthKey(e.t) === key; });
+    write("journal/" + key, ent.length ? { mois: key, entrees: ent } : null);
+  }
+
+  function migrateIfNeeded(kind, remoteEmpty) {
+    if (!remoteEmpty || LS.get("sync-" + kind, false)) return false;
+    LS.set("sync-" + kind, true);
+    if (kind === "routines") (S.routines || []).forEach(function (r) { write("routines/" + r.id, r); });
+    if (kind === "mouvements") Object.keys(S.mouvements).forEach(function (k) { write("mouvements/" + k, S.mouvements[k]); });
+    if (kind === "journal") { var ks = {}; S.journal.forEach(function (e) { ks[monthKey(e.t)] = 1; }); Object.keys(ks).forEach(pushJournalMonth); }
+    if (kind === "prefs") write("config/prefs", S.prefs);
+    return true;
+  }
+
+  function subscribe(coll, kind, apply) {
+    var timer = setTimeout(function () { if (S.sync === "connexion") { S.sync = "lent"; emit("sync"); } }, 10000);
+    db.collection(coll).onSnapshot(function (snap) {
+      if (snap.metadata.hasPendingWrites) return;
+      if (snap.metadata.fromCache && snap.empty) return;
+      if (!snap.metadata.fromCache) { clearTimeout(timer); if (S.sync !== "compte") { S.sync = "compte"; emit("sync"); } }
+      if (snap.empty && migrateIfNeeded(kind, true)) return;
+      LS.set("sync-" + kind, true);
+      apply(snap.docs.map(function (d) { return d.data(); }));
+      emit(kind);
+    }, function (e) {
+      clearTimeout(timer); console.warn("abonnement", coll, e);
+      S.sync = "local"; emit("sync");
+    });
+  }
+
+  C.connect = function () {
+    useCap("assets").then(function (a) { assets = a; });
+    useCap("downloads").then(function (d) { downloads = d; emit("caps"); });
+    return useCap("db").then(function (d) {
+      if (!d) return;
+      db = d; S.sync = "connexion"; emit("sync");
+      subscribe("routines", "routines", function (list) {
+        S.routines = list.map(clone).sort(function (a, b) { return (a.cree || 0) - (b.cree || 0); });
+        LS.set("routines", S.routines);
+      });
+      subscribe("mouvements", "mouvements", function (list) {
+        S.mouvements = {}; list.forEach(function (m) { S.mouvements[m.id] = clone(m); });
+        LS.set("mouvements", S.mouvements);
+      });
+      subscribe("journal", "journal", function (list) {
+        var all = []; list.forEach(function (doc) { (doc.entrees || []).forEach(function (e) { all.push(e); }); });
+        S.journal = all.sort(function (a, b) { return a.t - b.t; });
+        LS.set("journal", S.journal);
+      });
+      subscribe("config", "prefs", function (list) {
+        var p = list.filter(function (x) { return x && x.objectif != null; })[0];
+        if (p) { S.prefs = Object.assign(S.prefs, p); LS.set("prefs", S.prefs); }
+      });
+    });
+  };
+  C.hasDownloads = function () { return !!downloads; };
+  C.download = function (filename, text) { return downloads ? downloads.save({ filename: filename, data: text }) : Promise.reject(new Error("indisponible")); };
+
+  /* ---------- écritures ---------- */
+  C.saveRoutine = function (r) {
+    r.maj = Date.now(); r.cree = r.cree || r.maj;
+    var i = S.routines.findIndex(function (x) { return x.id === r.id; });
+    if (i < 0) S.routines.push(r); else S.routines[i] = r;
+    LS.set("routines", S.routines); write("routines/" + r.id, clone(r));
+  };
+  C.deleteRoutine = function (id) {
+    S.routines = S.routines.filter(function (x) { return x.id !== id; });
+    LS.set("routines", S.routines); write("routines/" + id, null);
+  };
+  C.saveMv = function (m) {
+    m.maj = Date.now(); S.mouvements[m.id] = m;
+    LS.set("mouvements", S.mouvements); write("mouvements/" + m.id, clone(m));
+  };
+  C.deleteMv = function (id) {
+    delete S.mouvements[id];
+    LS.set("mouvements", S.mouvements); write("mouvements/" + id, null);
+  };
+  C.addJournal = function (e) {
+    S.journal.push(e); LS.set("journal", S.journal); pushJournalMonth(monthKey(e.t));
+  };
+  C.deleteJournal = function (t) {
+    S.journal = S.journal.filter(function (e) { return e.t !== t; });
+    LS.set("journal", S.journal); pushJournalMonth(monthKey(t));
+  };
+  C.savePrefs = function () { LS.set("prefs", S.prefs); write("config/prefs", clone(S.prefs)); };
+  C.importAll = function (data) {
+    (data.routines || []).forEach(function (r) { C.saveRoutine(r); });
+    Object.keys(data.mouvements || {}).forEach(function (k) { C.saveMv(data.mouvements[k]); });
+    var known = {}; S.journal.forEach(function (e) { known[e.t] = 1; });
+    var months = {};
+    (data.journal || []).forEach(function (e) { if (!known[e.t]) { S.journal.push(e); months[monthKey(e.t)] = 1; } });
+    S.journal.sort(function (a, b) { return a.t - b.t; }); LS.set("journal", S.journal);
+    Object.keys(months).forEach(pushJournalMonth);
+  };
+
+  /* ---------- médias : compte (assets) ou appareil (IndexedDB) ---------- */
+  var idbP = null, mem = {}, urls = {};
+  function idb() {
+    if (idbP) return idbP;
+    idbP = new Promise(function (res) {
+      try {
+        var r = indexedDB.open("calisthenics", 1);
+        r.onupgradeneeded = function () { r.result.createObjectStore("medias"); };
+        r.onsuccess = function () { res(r.result); };
+        r.onerror = function () { res(null); };
+      } catch (e) { res(null); }
+    });
+    return idbP;
+  }
+  C.media = {
+    where: function () { return assets ? "compte" : "appareil"; },
+    put: function (blob) {
+      if (assets) return assets.upload(blob).then(function (r) { urls["a:" + r.id] = r.url; return "a:" + r.id; }).catch(function () { return localPut(blob); });
+      return localPut(blob);
+    },
+    url: function (ref) {
+      if (urls[ref]) return Promise.resolve(urls[ref]);
+      if (ref.indexOf("a:") === 0) { urls[ref] = "/_blob/" + ref.slice(2); return Promise.resolve(urls[ref]); }
+      var id = ref.slice(2);
+      if (mem[id]) { urls[ref] = URL.createObjectURL(mem[id]); return Promise.resolve(urls[ref]); }
+      return idb().then(function (d) {
+        if (!d) return null;
+        return new Promise(function (res) {
+          try {
+            var q = d.transaction("medias").objectStore("medias").get(id);
+            q.onsuccess = function () { if (!q.result) return res(null); urls[ref] = URL.createObjectURL(q.result); res(urls[ref]); };
+            q.onerror = function () { res(null); };
+          } catch (e) { res(null); }
+        });
+      });
+    },
+    remove: function (ref) {
+      if (urls[ref] && ref.indexOf("l:") === 0) URL.revokeObjectURL(urls[ref]);
+      delete urls[ref];
+      if (ref.indexOf("a:") === 0) { if (assets) assets.delete(ref.slice(2)).catch(function () {}); return; }
+      var id = ref.slice(2); delete mem[id];
+      idb().then(function (d) { if (d) try { d.transaction("medias", "readwrite").objectStore("medias").delete(id); } catch (e) {} });
+    }
+  };
+  function localPut(blob) {
+    var id = "m" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    return idb().then(function (d) {
+      if (!d) { mem[id] = blob; return "l:" + id; }
+      return new Promise(function (res) {
+        try {
+          var t = d.transaction("medias", "readwrite"); t.objectStore("medias").put(blob, id);
+          t.oncomplete = function () { res("l:" + id); };
+          t.onerror = t.onabort = function () { mem[id] = blob; res("l:" + id); };
+        } catch (e) { mem[id] = blob; res("l:" + id); }
+      });
+    });
+  }
+
+  /* ---------- déroulé d'une routine ---------- */
+  C.steps = function (r) {
+    var out = [];
+    function add(it, tag) {
+      var m = C.mv(it.mv);
+      var base = {
+        id: it.mv, cat: m ? m.categorie : "repos", dur: Math.max(1, Math.round(it.dur) || 1), tag: tag,
+        title: m ? m.nom : "Mouvement introuvable",
+        cue: m ? (m.consigne || m.description || "") : "Ce mouvement a été supprimé de la bibliothèque.",
+        vig: m ? (m.vigilance || "") : "", side: ""
+      };
+      if (m && m.cotes && it.cotes !== false) {
+        out.push(Object.assign({}, base, { side: "gauche" }));
+        out.push(Object.assign({}, base, { side: "droite" }));
+      } else out.push(base);
+    }
+    add({ mv: "depart", dur: r.depart }, "");
+    (r.items || []).forEach(function (it) {
+      if (it.bloc) {
+        var n = Math.max(1, it.rounds | 0);
+        for (var k = 0; k < n; k++) {
+          it.items.forEach(function (c, j) {
+            if (n > 1 && k === n - 1 && j === it.items.length - 1 && c.mv === "repos") return;
+            add(c, "Tour " + (k + 1) + "/" + n);
+          });
+        }
+      } else add(it, "");
+    });
+    add({ mv: "fin", dur: r.fin }, "");
+    return out;
+  };
+  C.total = function (r) { return C.steps(r).reduce(function (a, s) { return a + s.dur; }, 0); };
+  C.countEx = function (r) { return C.steps(r).filter(function (s) { return s.cat !== "repos" && s.cat !== "special"; }).length; };
+  C.fmt = function (sec) { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); };
+  C.monthKey = monthKey;
+
+  if (typeof module !== "undefined") module.exports = C;
+})(window.CAL);
+
+</script>
+<script>/* --- js/player.js --- */
+"use strict";
+/* Lecteur de séance : carrousel précédent / en cours / suivant, deux barres de temps, commandes. */
+(function (C) {
+  var S = C.state;
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return C.esc(s); };
+  var P = { steps: [], before: [], total: 0, idx: 0, rem: 0, run: false, done: false, endAt: 0, timer: null, last: -1, r: null, logged: false, figs: [] };
+
+  function stepTitle(s) { return s.title + (s.side ? " · " + s.side : ""); }
+
+  /* ---------- son, voix, vibration, écran allumé ---------- */
+  var ac = null;
+  function audio() { try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === "suspended") ac.resume(); } catch (e) {} }
+  function beep(f, d, w) {
+    if (!S.prefs.son || !ac) return;
+    try {
+      var t = ac.currentTime + (w || 0), o = ac.createOscillator(), g = ac.createGain();
+      o.type = "sine"; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.3, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d + 0.03);
+    } catch (e) {}
+  }
+  function say(t) {
+    if (!S.prefs.voix || !("speechSynthesis" in window)) return;
+    try { speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t); u.lang = "fr-FR"; u.rate = 1.05; speechSynthesis.speak(u); } catch (e) {}
+  }
+  function hush() { try { if ("speechSynthesis" in window) speechSynthesis.cancel(); } catch (e) {} }
+  function buzz(p) { if (!S.prefs.vibration) return; try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) {} }
+  var lock = null;
+  function wake() { try { if ("wakeLock" in navigator && !lock) navigator.wakeLock.request("screen").then(function (l) { lock = l; l.addEventListener("release", function () { lock = null; }); }, function () {}); } catch (e) {} }
+  function unwake() { try { if (lock) lock.release(); } catch (e) {} lock = null; }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && P.run) wake(); });
+
+  /* ---------- construction ---------- */
+  function build() {
+    var track = $("#p-track"); track.innerHTML = ""; P.figs = [];
+    P.steps.forEach(function (s, i) {
+      var c = document.createElement("div");
+      c.className = "pcard cat-" + s.cat; c.dataset.i = i;
+      c.innerHTML = '<div class="fig pfig"></div><div class="pc-txt"><strong></strong><span></span></div><span class="pc-dur"></span>';
+      c.querySelector("strong").textContent = stepTitle(s);
+      c.querySelector(".pc-txt span").textContent = s.tag || C.CATS[s.cat] || "";
+      c.querySelector(".pc-dur").textContent = C.fmt(s.dur);
+      c.addEventListener("click", function () { if (i !== P.idx) jump(i); });
+      track.appendChild(c);
+      var h = Figure.mount(c.querySelector(".pfig"), C.mv(s.id), { animate: false });
+      P.figs.push(h);
+    });
+    P.before = []; var acc = 0;
+    P.steps.forEach(function (s) { P.before.push(acc); acc += s.dur; });
+    P.total = acc;
+    $("#p-name").textContent = P.r.nom;
+    $("#p-tot").textContent = C.fmt(P.total);
+  }
+  function place() {
+    var track = $("#p-track"), vp = $("#p-carousel"), cards = track.children;
+    if (!cards.length) return;
+    var w = cards[0].offsetWidth, gap = parseFloat(getComputedStyle(track).columnGap) || 12;
+    var x = vp.clientWidth / 2 - (P.idx * (w + gap) + w / 2);
+    track.style.transform = "translateX(" + x.toFixed(1) + "px)";
+  }
+  window.addEventListener("resize", function () { if (!$("#player").hidden) place(); });
+
+  /* ---------- moteur ---------- */
+  function enter() {
+    var s = P.steps[P.idx], n = P.steps[P.idx + 1];
+    if (s.cat === "repos") { beep(440, 0.25); buzz(80); say("Repos." + (n ? " Ensuite, " + stepTitle(n) : "")); }
+    else if (s.id === "depart") { beep(660, 0.2); say("Préparez-vous." + (n ? " Premier exercice, " + stepTitle(n) : "")); }
+    else if (s.id === "fin") { beep(660, 0.2, 0); beep(880, 0.2, 0.25); beep(1100, 0.45, 0.5); buzz([200, 80, 200, 80, 400]); say("Séance terminée. Bravo."); log(true); }
+    else { beep(880, 0.35); buzz([60, 40, 60]); say(stepTitle(s)); }
+  }
+  function tick() {
+    var now = performance.now();
+    P.rem = P.endAt - now;
+    while (P.rem <= 0) {
+      if (P.idx >= P.steps.length - 1) { finish(); return; }
+      var over = -P.rem; P.idx++; P.rem = P.steps[P.idx].dur * 1000 - over; P.endAt = now + P.rem; P.last = -1;
+      enter(); show();
+    }
+    var sec = Math.ceil(P.rem / 1000);
+    if (sec !== P.last) { P.last = sec; if (sec >= 1 && sec <= 3 && P.steps[P.idx].dur > 3) beep(600, 0.1); }
+    clock();
+  }
+  function play() {
+    audio();
+    if (P.done) { restart(); return; }
+    P.run = true; P.endAt = performance.now() + P.rem;
+    clearInterval(P.timer); P.timer = setInterval(tick, 100); wake(); show();
+  }
+  function pause() { P.rem = P.endAt - performance.now(); P.run = false; clearInterval(P.timer); unwake(); hush(); show(); }
+  function finish() {
+    P.run = false; P.done = true; clearInterval(P.timer); unwake(); P.rem = 0;
+    if (!P.logged) log(true);
+    show();
+    var d = $("#p-done");
+    $("#p-done-txt").textContent = P.r.nom + " · " + C.fmt(P.total) + ". Séance ajoutée au journal.";
+    d.hidden = false; $("#p-done .btn.primary").focus();
+  }
+  function jump(i) {
+    i = Math.min(P.steps.length - 1, Math.max(0, i));
+    P.done = false; $("#p-done").hidden = true;
+    P.idx = i; P.rem = P.steps[i].dur * 1000; P.last = -1;
+    if (P.run) { P.endAt = performance.now() + P.rem; enter(); }
+    show();
+  }
+  function prev() { var el = P.steps[P.idx].dur * 1000 - P.rem; jump(el > 2500 && !P.done ? P.idx : P.idx - 1); }
+  function restart() { P.done = false; P.logged = false; $("#p-done").hidden = true; P.idx = 0; P.rem = P.steps[0].dur * 1000; P.last = -1; P.run = false; play(); enter(); }
+
+  function elapsed() { return P.done ? P.total : P.before[P.idx] + (P.steps[P.idx].dur * 1000 - Math.max(0, P.rem)) / 1000; }
+  function log(ok) {
+    if (P.logged) return;
+    var el = ok ? P.total : Math.round(elapsed());
+    P.logged = true;
+    C.addJournal({ t: Date.now(), r: P.r.id, nom: P.r.nom, dur: Math.round(el), ok: ok });
+  }
+
+  /* ---------- affichage ---------- */
+  function show() {
+    var s = P.steps[P.idx], n = P.steps[P.idx + 1];
+    $("#player").dataset.cat = P.done ? "special" : s.cat;
+    var cards = $("#p-track").children;
+    for (var i = 0; i < cards.length; i++) {
+      var d = i - P.idx;
+      cards[i].classList.toggle("is-cur", d === 0);
+      cards[i].classList.toggle("is-side", Math.abs(d) === 1);
+      cards[i].classList.toggle("is-past", d < 0);
+      cards[i].setAttribute("aria-hidden", d === 0 ? "false" : "true");
+      if (P.figs[i]) P.figs[i].active = Math.abs(d) <= 1;
+    }
+    place();
+    $("#p-tag").textContent = [C.CATS[s.cat], s.tag, s.side ? "côté " + s.side : ""].filter(Boolean).join(" · ");
+    $("#p-cue").textContent = s.cat === "repos" ? (n ? "Ensuite : " + stepTitle(n) : "") : s.cue;
+    $("#p-vig").textContent = s.cat === "repos" ? "" : s.vig;
+    $("#p-vig").hidden = !s.vig || s.cat === "repos";
+    $("#p-step").textContent = "étape " + (P.idx + 1) + "/" + P.steps.length;
+    var lbl = P.done ? "Recommencer" : P.run ? "Pause" : "Reprendre";
+    $("#p-play .lbl").textContent = lbl; $("#p-play").setAttribute("aria-label", lbl);
+    $("#p-play").classList.toggle("is-run", P.run);
+    $("#p-prev").disabled = P.idx === 0 && P.steps[0].dur * 1000 - P.rem < 2500;
+    $("#p-next").disabled = P.idx >= P.steps.length - 1;
+    clock();
+  }
+  function clock() {
+    var s = P.steps[P.idx], rem = P.done ? 0 : Math.max(0, P.rem), sec = Math.ceil(rem / 1000);
+    $("#p-clock").textContent = sec >= 60 ? C.fmt(sec) : String(sec);
+    $("#p-exrem").textContent = C.fmt(sec) + " restant";
+    $("#p-exbar").style.width = (P.done ? 100 : 100 - rem / (s.dur * 1000) * 100).toFixed(1) + "%";
+    var el = elapsed();
+    $("#p-el").textContent = C.fmt(el);
+    $("#p-allbar").style.width = (el / P.total * 100).toFixed(2) + "%";
+  }
+
+  function close() {
+    var el = elapsed();
+    var finishClose = function () {
+      clearInterval(P.timer); P.run = false; unwake(); hush();
+      $("#player").hidden = true; document.body.classList.remove("playing");
+      $("#p-track").innerHTML = ""; P.figs = [];
+      C.render();
+    };
+    if (P.done || P.logged || el < 30) { finishClose(); return; }
+    var wasRunning = P.run; if (wasRunning) pause();
+    C.dialog({ title: "Arrêter la séance ?", text: "Elle sera notée comme interrompue dans le journal (" + C.fmt(el) + " faites).", buttons: [{ label: "Continuer", value: false }, { label: "Arrêter", value: true, danger: true, primary: true }] }).then(function (ok) {
+      if (ok) { log(false); finishClose(); } else if (wasRunning) play();
+    });
+  }
+
+  /* ---------- gestes et clavier ---------- */
+  var sx = null, sy = null;
+  function bind() {
+    var car = $("#p-carousel");
+    car.addEventListener("pointerdown", function (e) { sx = e.clientX; sy = e.clientY; });
+    car.addEventListener("pointerup", function (e) {
+      if (sx == null) return;
+      var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) jump(P.idx + 1); else prev(); }
+    });
+    $("#p-play").addEventListener("click", function () { if (P.run) pause(); else play(); });
+    $("#p-prev").addEventListener("click", prev);
+    $("#p-next").addEventListener("click", function () { jump(P.idx + 1); });
+    $("#p-close").addEventListener("click", close);
+    $("#p-again").addEventListener("click", restart);
+    $("#p-quit").addEventListener("click", close);
+    ["son", "voix"].forEach(function (k) {
+      var b = $("#p-" + k);
+      b.addEventListener("click", function () {
+        S.prefs[k] = !S.prefs[k]; C.savePrefs(); b.setAttribute("aria-pressed", String(S.prefs[k]));
+        if (k === "son" && S.prefs.son) { audio(); beep(660, 0.15); }
+        if (k === "voix" && S.prefs.voix) say("Voix activée");
+      });
+    });
+    document.addEventListener("keydown", function (e) {
+      if ($("#player").hidden || !$("#dlg").hidden) return;
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+      if (e.code === "Space") { e.preventDefault(); if (P.run) pause(); else play(); }
+      else if (e.key === "ArrowRight") jump(P.idx + 1);
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "Escape") close();
+    });
+  }
+
+  C.Player = {
+    launch: function (r) {
+      P.r = r; P.steps = C.steps(r); P.idx = 0; P.done = false; P.logged = false; P.last = -1;
+      P.rem = P.steps[0].dur * 1000;
+      $("#player").hidden = false; $("#p-done").hidden = true; document.body.classList.add("playing");
+      ["son", "voix"].forEach(function (k) { $("#p-" + k).setAttribute("aria-pressed", String(!!S.prefs[k])); });
+      build();
+      requestAnimationFrame(function () { show(); play(); enter(); });
+    },
+    _state: P
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bind); else bind();
+})(window.CAL);
+
+</script>
+<script>/* --- js/app.js --- */
+"use strict";
+/* Interface : routines, éditeur, bibliothèque, fiche, module mouvement, journal, réglages. */
+(function (C) {
+  var S = C.state;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var CATS = { echauffement: "Échauffement", force: "Force", flow: "Flow", etirement: "Étirement", repos: "Repos", special: "Départ / fin" };
+  var CAT_ORDER = ["echauffement", "force", "flow", "etirement", "repos", "special"];
+  var ZONES = ["tronc", "dos", "épaules", "pectoraux", "bras", "poignets", "hanches", "fessiers", "cuisses", "ischios"];
+  var NIVEAUX = { debutant: "Débutant", intermediaire: "Intermédiaire", avance: "Avancé" };
+  var MATERIEL = { tapis: "Tapis", elastique: "Élastique", meuble: "Meuble stable" };
+  var DAYS = [[1, "L"], [2, "Ma"], [3, "Me"], [4, "J"], [5, "V"], [6, "S"], [0, "D"]];
+  var DAY_NAMES = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+  var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+  var uid = function (p) { return p + "-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); };
+  var ytSearch = function (q) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(q).replace(/%20/g, "+"); };
+  C.esc = esc; C.CATS = CATS;
+
+  Figure.resolve = C.mv;
+  Figure.mediaUrl = function (ref) { return C.media.url(ref); };
+
+  /* ---------- petits composants ---------- */
+  function toast(msg) {
+    var t = $("#toast"); t.textContent = msg; t.hidden = false;
+    clearTimeout(toast.tm); toast.tm = setTimeout(function () { t.hidden = true; }, 2600);
+  }
+  C.toast = toast;
+  /* Boîte de dialogue : renvoie la valeur du bouton choisi (ou null). */
+  function dialog(o) {
+    return new Promise(function (res) {
+      var d = $("#dlg");
+      d.innerHTML = '<div class="dlg-card" role="dialog" aria-modal="true" aria-labelledby="dlg-t"><h2 id="dlg-t">' + esc(o.title) + "</h2>" +
+        (o.text ? "<p>" + esc(o.text) + "</p>" : "") + (o.html || "") +
+        '<div class="dlg-btns">' + (o.buttons || [{ label: "OK", value: true, primary: true }]).map(function (b, i) {
+          return '<button type="button" class="btn ' + (b.primary ? "primary" : "") + (b.danger ? " danger" : "") + '" data-i="' + i + '">' + esc(b.label) + "</button>";
+        }).join("") + "</div></div>";
+      d.hidden = false;
+      var btns = o.buttons || [{ label: "OK", value: true }];
+      function close(v) { d.hidden = true; d.innerHTML = ""; d.onclick = null; document.removeEventListener("keydown", key); res(v); }
+      function key(e) { if (e.key === "Escape") close(null); }
+      document.addEventListener("keydown", key);
+      d.onclick = function (e) {
+        var b = e.target.closest("[data-i]");
+        if (b) close(btns[+b.dataset.i].value);
+        else if (e.target === d) close(null);
+      };
+      var f = d.querySelector(".btn.primary") || d.querySelector(".btn"); if (f) f.focus();
+    });
+  }
+  C.dialog = dialog;
+
+  function durInputs(key, sec, label) {
+    sec = Math.max(0, Math.round(sec) || 0);
+    return '<div class="dur" role="group" aria-label="' + esc(label || "Durée") + '">' +
+      '<input type="number" inputmode="numeric" min="0" max="59" data-dur="' + key + '" data-part="m" value="' + Math.floor(sec / 60) + '" aria-label="Minutes"><span>min</span>' +
+      '<input type="number" inputmode="numeric" min="0" max="59" data-dur="' + key + '" data-part="s" value="' + (sec % 60) + '" aria-label="Secondes"><span>s</span></div>';
+  }
+  function readDur(key) {
+    var m = +($('[data-dur="' + key + '"][data-part="m"]') || {}).value || 0;
+    var s = +($('[data-dur="' + key + '"][data-part="s"]') || {}).value || 0;
+    return Math.max(0, Math.round(m) * 60 + Math.round(s));
+  }
+  function fig(id, anim, cls) { return '<div class="fig ' + (cls || "") + '" data-fig="' + esc(id) + '"' + (anim ? ' data-anim="1"' : "") + "></div>"; }
+  function mountFigs(root) {
+    root.querySelectorAll("[data-fig]").forEach(function (el) {
+      var m = el.dataset.draft ? nav.params.preview : C.mv(el.dataset.fig);
+      Figure.mount(el, m, { animate: el.dataset.anim === "1" });
+    });
+  }
+  function catPill(cat) { return '<span class="pill cat-' + cat + '">' + esc(CATS[cat] || cat) + "</span>"; }
+  function daysLabel(j) { return DAYS.filter(function (d) { return (j || []).indexOf(d[0]) >= 0; }).map(function (d) { return d[1]; }).join(" "); }
+  function mvOptions(sel, excludeSpecial) {
+    return CAT_ORDER.filter(function (c) { return !(excludeSpecial && c === "special"); }).map(function (c) {
+      var list = C.allMv().filter(function (m) { return m.categorie === c; }).sort(function (a, b) { return a.nom.localeCompare(b.nom, "fr"); });
+      if (!list.length) return "";
+      return '<optgroup label="' + esc(CATS[c]) + '">' + list.map(function (m) {
+        return '<option value="' + esc(m.id) + '"' + (m.id === sel ? " selected" : "") + ">" + esc(m.nom) + (C.origin(m.id) === "perso" ? " (perso)" : "") + "</option>";
+      }).join("") + "</optgroup>";
+    }).join("");
+  }
+
+  /* ---------- navigation ---------- */
+  var nav = { view: "routines", params: {} }, stack = [];
+  function go(view, params) { stack.push(nav); nav = { view: view, params: params || {} }; render(); window.scrollTo(0, 0); }
+  function back() { nav = stack.pop() || { view: "routines", params: {} }; render(); }
+  function tab(view) { stack = []; nav = { view: view, params: {} }; render(); window.scrollTo(0, 0); }
+  C.go = go; C.back = back;
+
+  var VIEWS = {};
+  function render() {
+    var v = VIEWS[nav.view] || VIEWS.routines;
+    var html = v(nav.params);
+    if (html == null) return;
+    $("#view").innerHTML = html;
+    mountFigs($("#view"));
+    var main = { routines: 1, biblio: 1, journal: 1, reglages: 1, fiche: 1 }[nav.view];
+    document.body.classList.toggle("has-tabs", !!main);
+    document.body.classList.toggle("has-launch", nav.view === "editeur");
+    document.querySelectorAll("#tabs [data-tab]").forEach(function (b) {
+      var on = b.dataset.tab === nav.view || (b.dataset.tab === "biblio" && (nav.view === "fiche" || nav.view === "mvedit") && !stack.some(function (s) { return s.view === "editeur"; }));
+      b.classList.toggle("on", on); b.setAttribute("aria-current", on ? "page" : "false");
+    });
+    if (v.after) v.after(nav.params);
+  }
+  C.render = render;
+
+  /* ---------- statistiques ---------- */
+  function dayKey(t) { var d = new Date(t); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+  function weekStart(d) { var x = new Date(d); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; }
+  function doneDays() { var s = {}; S.journal.forEach(function (e) { if (e.ok) s[dayKey(e.t)] = 1; }); return s; }
+  function weekCount() {
+    var ws = weekStart(new Date()).getTime(), seen = {};
+    S.journal.forEach(function (e) { if (e.ok && e.t >= ws) seen[dayKey(e.t)] = 1; });
+    return Object.keys(seen).length;
+  }
+  function streak() {
+    var done = doneDays(), d = new Date(), n = 0;
+    d.setHours(12, 0, 0, 0);
+    if (!done[dayKey(d)]) d.setDate(d.getDate() - 1);
+    for (var guard = 0; guard < 400; guard++) {
+      var wd = d.getDay();
+      if (wd === 0 || wd === 6) { if (done[dayKey(d)]) n++; d.setDate(d.getDate() - 1); continue; }
+      if (!done[dayKey(d)]) break;
+      n++; d.setDate(d.getDate() - 1);
+    }
+    return n;
+  }
+
+  /* =========================================================
+     ROUTINES (accueil)
+     ========================================================= */
+  function firstEx(r) { var s = C.steps(r).filter(function (x) { return x.cat !== "special" && x.cat !== "repos"; })[0]; return s ? s.id : "depart"; }
+  function routineMeta(r) {
+    var d = daysLabel(r.jours);
+    return C.fmt(C.total(r)) + " · " + C.countEx(r) + " exercices" + (d ? " · " + d : "");
+  }
+  VIEWS.routines = function () {
+    if (!S.loaded) return '<p class="empty">Chargement de la bibliothèque…</p>';
+    var today = new Date().getDay();
+    var rs = S.routines || [];
+    var todays = rs.filter(function (r) { return (r.jours || []).indexOf(today) >= 0; });
+    var favs = rs.filter(function (r) { return r.fav; });
+    var others = rs.filter(function (r) { return !r.fav; });
+    var wk = weekCount(), obj = S.prefs.objectif;
+    var html = '<header class="top"><div><p class="eyebrow">' + esc(cap(DAY_NAMES[today])) + " · " + wk + "/" + obj + ' séances cette semaine</p><h1>Routines</h1></div>' +
+      '<button type="button" class="btn primary" data-act="new-routine">+ Nouvelle</button></header>';
+    if (todays.length) {
+      html += '<section class="today"><h2 class="sec">Aujourd\'hui</h2>' + todays.map(function (r) {
+        return '<div class="today-row"><div><strong>' + esc(r.nom) + '</strong><span class="meta">' + C.fmt(C.total(r)) + '</span></div><button type="button" class="btn primary" data-act="launch" data-id="' + esc(r.id) + '">Lancer</button></div>';
+      }).join("") + "</section>";
+    }
+    html += '<section><h2 class="sec">Favorites</h2>';
+    html += favs.length ? '<div class="cards">' + favs.map(function (r) {
+      return '<article class="rcard">' + fig(firstEx(r), true, "rcard-fig") +
+        '<div class="rcard-body"><h3>' + esc(r.nom) + '</h3><p class="meta">' + esc(routineMeta(r)) + "</p></div>" +
+        '<button type="button" class="star on" data-act="fav" data-id="' + esc(r.id) + '" aria-label="Retirer des favorites" aria-pressed="true">★</button>' +
+        '<div class="rcard-actions"><button type="button" class="btn" data-act="edit-routine" data-id="' + esc(r.id) + '">Modifier</button>' +
+        '<button type="button" class="btn primary" data-act="launch" data-id="' + esc(r.id) + '">Lancer</button></div></article>';
+    }).join("") + "</div>" : '<p class="empty">Touche l\'étoile d\'une routine pour l\'épingler ici.</p>';
+    html += '</section><section><h2 class="sec">Autres routines</h2>';
+    html += others.length ? '<ul class="rows">' + others.map(function (r) {
+      return '<li class="row"><button type="button" class="row-main" data-act="edit-routine" data-id="' + esc(r.id) + '"><strong>' + esc(r.nom) + '</strong><span class="meta">' + esc(routineMeta(r)) + "</span></button>" +
+        '<button type="button" class="star" data-act="fav" data-id="' + esc(r.id) + '" aria-label="Ajouter aux favorites" aria-pressed="false">☆</button>' +
+        '<button type="button" class="btn primary sm" data-act="launch" data-id="' + esc(r.id) + '">Lancer</button></li>';
+    }).join("") + "</ul>" : '<p class="empty">' + (rs.length ? "Toutes tes routines sont en favorites." : 'Aucune routine. Crée-en une avec « + Nouvelle », ou réinstalle les routines de base dans Réglages.') + "</p>";
+    return html + "</section>";
+  };
+
+  function routineById(id) { return (S.routines || []).filter(function (r) { return r.id === id; })[0]; }
+
+  /* =========================================================
+     ÉDITEUR DE ROUTINE
+     ========================================================= */
+  function getAt(r, path) {
+    var p = String(path).split(".").map(Number);
+    if (p.length === 1) return { arr: r.items, i: p[0], item: r.items[p[0]] };
+    var bloc = r.items[p[0]];
+    return { arr: bloc.items, i: p[1], item: bloc.items[p[1]], bloc: bloc };
+  }
+  function itemRow(it, path) {
+    if (it.bloc) {
+      var inner = { depart: 1, fin: 1, items: [it] }, blocDur = C.total({ depart: 0, fin: 0, items: [it] }) - 2;
+      void inner;
+      return '<li class="bloc" data-path="' + path + '"><div class="bloc-head"><strong>Bloc répété</strong>' +
+        '<div class="stepper sm"><button type="button" data-act="rounds" data-d="-1" data-path="' + path + '" aria-label="Un tour de moins">−</button><span>× ' + it.rounds + " tour" + (it.rounds > 1 ? "s" : "") + '</span><button type="button" data-act="rounds" data-d="1" data-path="' + path + '" aria-label="Un tour de plus">+</button></div></div>' +
+        (it.items.length ? '<ol class="items">' + it.items.map(function (c, j) { return itemRow(c, path + "." + j); }).join("") + "</ol>"
+          : '<p class="empty">Bloc vide. Plus bas, choisis « Dans : Bloc » pour y ajouter des exercices.</p>') +
+        '<p class="hint">Durée du bloc : ' + C.fmt(Math.max(0, blocDur)) + (it.rounds > 1 ? ". Le repos à la fin du dernier tour est sauté." : "") + "</p>" +
+        tools(path, null) + "</li>";
+    }
+    var m = C.mv(it.mv), cat = m ? m.categorie : "repos";
+    var sides = m && m.cotes;
+    return '<li class="item cat-' + cat + '" data-path="' + path + '"><div class="item-main">' + fig(it.mv, false, "thumb") +
+      '<div class="item-txt"><strong>' + esc(m ? m.nom : "Mouvement introuvable") + '</strong><span class="meta">' + esc(CATS[cat] || "") +
+      (sides ? (it.cotes !== false ? " · gauche puis droite" : " · un seul côté") : "") + "</span></div>" +
+      durInputs(path, it.dur, sides && it.cotes !== false ? "Durée par côté" : "Durée") + "</div>" + tools(path, sides ? it : null) + "</li>";
+  }
+  function tools(path, sidesItem) {
+    return '<div class="item-tools">' +
+      '<button type="button" class="tool" data-act="move" data-d="-1" data-path="' + path + '" aria-label="Monter">↑</button>' +
+      '<button type="button" class="tool" data-act="move" data-d="1" data-path="' + path + '" aria-label="Descendre">↓</button>' +
+      (sidesItem ? '<button type="button" class="tool chip ' + (sidesItem.cotes !== false ? "on" : "") + '" data-act="sides" data-path="' + path + '" aria-pressed="' + (sidesItem.cotes !== false) + '">G + D</button>' : "") +
+      '<button type="button" class="tool" data-act="dup" data-path="' + path + '">Dupliquer</button>' +
+      '<button type="button" class="tool danger" data-act="del" data-path="' + path + '">Retirer</button></div>';
+  }
+  VIEWS.editeur = function (p) {
+    var r = routineById(p.id);
+    if (!r) { setTimeout(back, 0); return ""; }
+    if (!p.addMv || !C.mv(p.addMv)) p.addMv = "pompes";
+    var am = C.mv(p.addMv);
+    if (p.addDur == null) p.addDur = am ? am.duree : 30;
+    var blocs = []; r.items.forEach(function (it, i) { if (it.bloc) blocs.push(i); });
+    if (p.target !== "root" && blocs.indexOf(+p.target) < 0) p.target = "root";
+    var total = C.total(r);
+    return '<header class="top"><button type="button" class="btn ghost" data-act="back">← Retour</button>' +
+      '<span class="saved" id="saved" aria-live="polite">Enregistré</span>' +
+      '<button type="button" class="btn ghost" data-act="routine-menu" data-id="' + esc(r.id) + '">Options</button></header>' +
+      '<label class="sr" for="r-name">Nom de la routine</label><input id="r-name" class="title-input" data-bind="r-name" value="' + esc(r.nom) + '" placeholder="Nom de la routine">' +
+      '<div class="r-opts"><button type="button" class="star ' + (r.fav ? "on" : "") + '" data-act="fav" data-id="' + esc(r.id) + '" aria-pressed="' + !!r.fav + '">' + (r.fav ? "★ Favorite" : "☆ Favorite") + "</button>" +
+      '<div class="days" role="group" aria-label="Jours prévus">' + DAYS.map(function (d) {
+        var on = (r.jours || []).indexOf(d[0]) >= 0;
+        return '<button type="button" class="chip ' + (on ? "on" : "") + '" data-act="day" data-d="' + d[0] + '" aria-pressed="' + on + '">' + d[1] + "</button>";
+      }).join("") + "</div></div>" +
+      '<ol class="items main-list">' +
+      '<li class="item fixed cat-special"><div class="item-main">' + fig("depart", false, "thumb") + '<div class="item-txt"><strong>Départ</strong><span class="meta">Compte à rebours</span></div>' + durInputs("depart", r.depart) + "</div></li>" +
+      r.items.map(function (it, i) { return itemRow(it, String(i)); }).join("") +
+      '<li class="item fixed cat-special"><div class="item-main">' + fig("fin", false, "thumb") + '<div class="item-txt"><strong>Fin</strong><span class="meta">Écran de fin</span></div>' + durInputs("fin", r.fin) + "</div></li></ol>" +
+      '<section class="addcard" aria-labelledby="add-h"><h2 class="sec" id="add-h">Ajouter un exercice</h2>' +
+      '<label for="add-mv">Exercice de la bibliothèque</label>' +
+      '<div class="addrow"><select id="add-mv" data-bind="add-mv">' + mvOptions(p.addMv, true) + "</select>" +
+      '<button type="button" class="btn icon" data-act="new-mv" aria-label="Créer un nouveau mouvement" title="Créer un mouvement">+</button></div>' +
+      '<div class="addrow2"><div><span class="lbl">Durée' + (am && am.cotes ? " par côté" : "") + "</span>" + durInputs("add", p.addDur) + "</div>" +
+      (blocs.length ? '<div><label class="lbl" for="add-target">Dans</label><select id="add-target" data-bind="add-target"><option value="root">La routine</option>' +
+        blocs.map(function (i, k) { return '<option value="' + i + '"' + (String(p.target) === String(i) ? " selected" : "") + ">Bloc " + (k + 1) + " (× " + r.items[i].rounds + ")</option>"; }).join("") + "</select></div>" : "") +
+      "</div>" +
+      '<button type="button" class="btn primary wide" data-act="add">Ajouter</button>' +
+      '<div class="quick"><button type="button" class="btn" data-act="add-rest">+ Repos</button><button type="button" class="btn" data-act="add-bloc">+ Bloc répété</button></div></section>' +
+      '<div class="launchbar"><div><span class="eyebrow">Durée totale</span><strong class="tot">' + C.fmt(total) + '</strong><span class="meta">' + C.countEx(r) + " exercices</span></div>" +
+      '<button type="button" class="btn primary big" data-act="launch" data-id="' + esc(r.id) + '">Lancer</button></div>';
+  };
+  function saveCur(r, rerender) {
+    C.saveRoutine(r);
+    var s = $("#saved"); if (s) { s.classList.remove("flash"); void s.offsetWidth; s.classList.add("flash"); }
+    if (rerender !== false) render();
+  }
+
+  /* =========================================================
+     BIBLIOTHÈQUE
+     ========================================================= */
+  VIEWS.biblio = function (p) {
+    p.cat = p.cat || "tous";
+    return '<header class="top"><div><p class="eyebrow">' + C.allMv().length + ' mouvements</p><h1>Bibliothèque</h1></div><button type="button" class="btn primary" data-act="new-mv">+ Mouvement</button></header>' +
+      '<label class="sr" for="bq">Rechercher</label><input id="bq" class="search" type="search" placeholder="Rechercher un mouvement" data-bind="bq" value="' + esc(p.q || "") + '">' +
+      '<div class="chips" role="group" aria-label="Catégorie">' + ["tous"].concat(CAT_ORDER).map(function (c) {
+        return '<button type="button" class="chip ' + (p.cat === c ? "on" : "") + '" data-act="bcat" data-c="' + c + '" aria-pressed="' + (p.cat === c) + '">' + (c === "tous" ? "Tous" : esc(CATS[c])) + "</button>";
+      }).join("") + "</div>" +
+      '<div class="chips" role="group" aria-label="Filtres"><button type="button" class="chip ' + (p.dos ? "on" : "") + '" data-act="bdos" aria-pressed="' + !!p.dos + '">Compatible dos</button>' +
+      '<label class="sr" for="bz">Zone travaillée</label><select id="bz" class="chip-select" data-bind="bz"><option value="">Toutes les zones</option>' + ZONES.map(function (z) { return '<option value="' + z + '"' + (p.zone === z ? " selected" : "") + ">" + cap(z) + "</option>"; }).join("") + "</select></div>" +
+      '<div class="grid" id="grid"></div>';
+  };
+  VIEWS.biblio.after = function (p) { fillGrid(p); };
+  function fillGrid(p) {
+    var q = (p.q || "").trim().toLowerCase();
+    var list = C.allMv().filter(function (m) {
+      if (p.cat !== "tous" && m.categorie !== p.cat) return false;
+      if (p.dos && !m.dos) return false;
+      if (p.zone && (m.zones || []).indexOf(p.zone) < 0) return false;
+      if (q && (m.nom + " " + (m.description || "") + " " + (m.zones || []).join(" ")).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    }).sort(function (a, b) { return CAT_ORDER.indexOf(a.categorie) - CAT_ORDER.indexOf(b.categorie) || a.nom.localeCompare(b.nom, "fr"); });
+    var g = $("#grid");
+    g.innerHTML = list.length ? list.map(function (m) {
+      var o = C.origin(m.id);
+      return '<button type="button" class="mvcard cat-' + m.categorie + '" data-act="fiche" data-id="' + esc(m.id) + '">' + fig(m.id, true, "mvfig") +
+        '<span class="mv-name">' + esc(m.nom) + "</span>" +
+        '<span class="meta">' + esc(CATS[m.categorie]) + " · " + C.fmt(m.duree) + (m.cotes ? " × 2" : "") + "</span>" +
+        (o === "perso" ? '<span class="badge">Perso</span>' : o === "modifie" ? '<span class="badge">Modifié</span>' : "") + "</button>";
+    }).join("") : '<p class="empty">Aucun mouvement ne correspond. Essaie un autre filtre, ou crée-le avec « + Mouvement ».</p>';
+    mountFigs(g);
+  }
+
+  /* =========================================================
+     FICHE D'UN MOUVEMENT
+     ========================================================= */
+  VIEWS.fiche = function (p) {
+    var m = C.mv(p.id);
+    if (!m) { setTimeout(back, 0); return ""; }
+    var o = C.origin(m.id);
+    var yt = m.youtube || ytSearch(m.nom + " exercice tutoriel");
+    var variante = function (k, label) {
+      var v = m.variantes && m.variantes[k] && C.mv(m.variantes[k]);
+      return v ? '<button type="button" class="btn" data-act="fiche" data-id="' + esc(v.id) + '">' + label + " : " + esc(v.nom) + "</button>" : "";
+    };
+    var vars = variante("facile", "Plus facile") + variante("difficile", "Plus difficile");
+    return '<header class="top"><button type="button" class="btn ghost" data-act="back">← Retour</button></header>' +
+      '<div class="fiche-fig cat-' + m.categorie + '">' + fig(m.id, true, "big") + "</div>" +
+      '<h1 class="fiche-title">' + esc(m.nom) + "</h1>" +
+      '<div class="pills">' + catPill(m.categorie) + '<span class="pill soft">' + esc(NIVEAUX[m.niveau] || "Débutant") + "</span>" +
+      (m.dos ? '<span class="pill ok">Compatible dos</span>' : "") + (o === "perso" ? '<span class="pill soft">Perso</span>' : o === "modifie" ? '<span class="pill soft">Modifié</span>' : "") + "</div>" +
+      (m.description ? '<p class="lead">' + esc(m.description) + "</p>" : "") +
+      (m.consigne ? '<h2 class="sec">Consigne</h2><p>' + esc(m.consigne) + "</p>" : "") +
+      (m.vigilance ? '<div class="vig"><strong>Vigilance</strong><p>' + esc(m.vigilance) + "</p></div>" : "") +
+      '<dl class="facts"><div><dt>Durée par défaut</dt><dd>' + C.fmt(m.duree) + (m.cotes ? " par côté" : "") + "</dd></div>" +
+      "<div><dt>Côtés</dt><dd>" + (m.cotes ? "Gauche puis droite" : "Non") + "</dd></div>" +
+      "<div><dt>Zones</dt><dd>" + esc((m.zones || []).map(cap).join(", ") || "—") + "</dd></div>" +
+      "<div><dt>Matériel</dt><dd>" + esc((m.materiel || []).map(function (x) { return MATERIEL[x] || x; }).join(", ") || "Aucun") + "</dd></div></dl>" +
+      (vars ? '<h2 class="sec">Variantes</h2><div class="btnrow">' + vars + "</div>" : "") +
+      (m.categorie !== "special" ? '<a class="btn wide yt" href="' + esc(yt) + '" target="_blank" rel="noopener">Voir des démonstrations sur YouTube</a>' : "") +
+      '<div class="btnrow">' +
+      '<button type="button" class="btn primary" data-act="edit-mv" data-id="' + esc(m.id) + '">Modifier</button>' +
+      (m.categorie !== "special" ? '<button type="button" class="btn" data-act="dup-mv" data-id="' + esc(m.id) + '">Dupliquer</button>' : "") +
+      (o === "modifie" ? '<button type="button" class="btn" data-act="restore-mv" data-id="' + esc(m.id) + '">Rétablir l\'original</button>' : "") +
+      (o === "perso" ? '<button type="button" class="btn danger" data-act="del-mv" data-id="' + esc(m.id) + '">Supprimer</button>' : "") +
+      '<button type="button" class="btn" data-act="export-mv" data-id="' + esc(m.id) + '">Exporter la fiche</button></div>' +
+      '<p class="source">' + (o === "perso" ? "Mouvement perso, enregistré dans ton compte." : "Fichier source : bibliotheque/" + esc(m.id) + ".json" + (o === "modifie" ? " (ta version modifiée est enregistrée dans ton compte)" : "")) + "</p>";
+  };
+
+  /* =========================================================
+     MODULE MOUVEMENT : création / modification
+     ========================================================= */
+  function blankMv() {
+    return { id: "", nom: "", categorie: "force", duree: 30, cotes: false, description: "", consigne: "", vigilance: "", zones: [], niveau: "debutant", materiel: ["tapis"], dos: true, youtube: "", variantes: { facile: null, difficile: null }, animation: { type: "baton", ref: "repos" } };
+  }
+  function openMvEdit(id, opts) {
+    opts = opts || {};
+    var src = id ? C.mv(id) : null;
+    var d = src ? C.clone(src) : blankMv();
+    if (opts.duplicate) { d.id = ""; d.nom = d.nom + " (copie)"; }
+    var a = d.animation || {};
+    var draft = {
+      mv: d, isNew: !src || !!opts.duplicate, srcId: src && !opts.duplicate ? src.id : null,
+      mode: a.type === "medias" && a.medias && a.medias.length ? "medias" : "baton",
+      medias: a.type === "medias" ? (a.medias || []).slice() : [],
+      ref: a.type === "baton" && a.images ? "__own" : (a.ref || "repos"),
+      ownImages: a.type === "baton" && a.images ? a.images : null,
+      added: [], removed: [], fromRoutine: !!opts.fromRoutine, busy: false
+    };
+    if (opts.duplicate && draft.medias.length) {
+      /* Copie indépendante des photos : on garde les mêmes références tant qu'on ne supprime pas l'original. */
+      draft.sharedMedias = true;
+    }
+    go("mvedit", { draft: draft, preview: null });
+  }
+  function previewMv(dr) {
+    var m = C.clone(dr.mv);
+    if (dr.mode === "medias" && dr.medias.length) m.animation = { type: "medias", medias: dr.medias.slice() };
+    else m.animation = dr.ref === "__own" && dr.ownImages ? { type: "baton", images: dr.ownImages } : { type: "baton", ref: dr.ref };
+    return m;
+  }
+  VIEWS.mvedit = function (p) {
+    var dr = p.draft, m = dr.mv;
+    p.preview = previewMv(dr);
+    var special = m.categorie === "special";
+    var batonList = C.allMv().filter(function (x) { return x.animation && x.animation.type === "baton" && x.animation.images; })
+      .sort(function (a, b) { return a.nom.localeCompare(b.nom, "fr"); });
+    var mvSel = function (k) {
+      var cur = m.variantes && m.variantes[k];
+      return '<select id="mv-' + k + '" data-bind="mv-var" data-k="' + k + '"><option value="">Aucune</option>' +
+        C.allMv().filter(function (x) { return x.id !== m.id && x.categorie !== "special" && x.categorie !== "repos"; }).sort(function (a, b) { return a.nom.localeCompare(b.nom, "fr"); })
+          .map(function (x) { return '<option value="' + esc(x.id) + '"' + (cur === x.id ? " selected" : "") + ">" + esc(x.nom) + "</option>"; }).join("") + "</select>";
+    };
+    return '<header class="top"><button type="button" class="btn ghost" data-act="mv-cancel">Annuler</button><strong>' + (dr.isNew ? "Nouveau mouvement" : "Modifier") + "</strong>" +
+      '<button type="button" class="btn primary" data-act="mv-save"' + (dr.busy ? " disabled" : "") + ">Enregistrer</button></header>" +
+      '<div class="form">' +
+      '<section class="fbox"><h2 class="sec">Visuel</h2>' +
+      '<div class="preview cat-' + esc(m.categorie) + '"><div class="fig big" data-fig="draft" data-draft="1" data-anim="1"></div></div>' +
+      '<div class="seg" role="group" aria-label="Type de visuel"><button type="button" class="' + (dr.mode === "medias" ? "on" : "") + '" data-act="mv-mode" data-m="medias" aria-pressed="' + (dr.mode === "medias") + '">Photos ou GIF</button>' +
+      '<button type="button" class="' + (dr.mode === "baton" ? "on" : "") + '" data-act="mv-mode" data-m="baton" aria-pressed="' + (dr.mode === "baton") + '">Bonhomme</button></div>' +
+      (dr.mode === "medias" ?
+        (dr.medias.length ? '<ol class="medias">' + dr.medias.map(function (ref, i) {
+          return '<li><img alt="Image ' + (i + 1) + '" data-media="' + esc(ref) + '"><div class="media-tools">' +
+            '<button type="button" class="tool" data-act="media-move" data-i="' + i + '" data-d="-1" aria-label="Avancer">←</button>' +
+            '<button type="button" class="tool" data-act="media-move" data-i="' + i + '" data-d="1" aria-label="Reculer">→</button>' +
+            '<button type="button" class="tool danger" data-act="media-del" data-i="' + i + '" aria-label="Retirer">✕</button></div></li>';
+        }).join("") + "</ol>" : "") +
+        '<div class="btnrow"><label class="btn file"><input type="file" accept="image/*" capture="environment" data-file="1">Prendre une photo</label>' +
+        '<label class="btn file"><input type="file" accept="image/*,.gif" multiple data-file="1">Importer image ou GIF</label></div>' +
+        '<p class="hint">' + (dr.busy ? "Enregistrement des images…" : "Avec 2 photos ou plus, elles alternent pendant la séance : position de départ, puis d'arrivée. Un GIF s'anime tout seul. Les photos sont réduites automatiquement ; un GIF peut peser jusqu'à 3 Mo.") + "</p>"
+        : '<label for="mv-ref">Bonhomme utilisé</label><select id="mv-ref" data-bind="mv-ref">' +
+          (dr.ownImages ? '<option value="__own"' + (dr.ref === "__own" ? " selected" : "") + ">Bonhomme d'origine</option>" : "") +
+          batonList.filter(function (x) { return !dr.srcId || x.id !== dr.srcId || !dr.ownImages; }).map(function (x) { return '<option value="' + esc(x.id) + '"' + (dr.ref === x.id ? " selected" : "") + ">" + esc(x.nom) + "</option>"; }).join("") + "</select>" +
+          '<p class="hint">Choisis le bonhomme d\'un mouvement proche. Pour un dessin sur mesure, demande-le en session : il sera ajouté aux fichiers de la bibliothèque.</p>') +
+      "</section>" +
+      '<section class="fbox"><h2 class="sec">Fiche</h2>' +
+      '<label for="mv-nom">Nom *</label><input id="mv-nom" data-bind="mv" data-f="nom" value="' + esc(m.nom) + '" placeholder="Ex. : Fente arrière" required>' +
+      (special ? "" : '<label for="mv-cat">Catégorie</label><select id="mv-cat" data-bind="mv" data-f="categorie">' + CAT_ORDER.filter(function (c) { return c !== "special"; }).map(function (c) { return '<option value="' + c + '"' + (m.categorie === c ? " selected" : "") + ">" + CATS[c] + "</option>"; }).join("") + "</select>") +
+      '<label for="mv-desc">Description</label><textarea id="mv-desc" rows="2" data-bind="mv" data-f="description" placeholder="À quoi sert ce mouvement ?">' + esc(m.description) + "</textarea>" +
+      '<label for="mv-cons">Consigne</label><textarea id="mv-cons" rows="3" data-bind="mv" data-f="consigne" placeholder="Comment le faire. Affichée pendant la séance.">' + esc(m.consigne) + "</textarea>" +
+      '<label for="mv-vig">Points de vigilance</label><textarea id="mv-vig" rows="2" data-bind="mv" data-f="vigilance" placeholder="Ex. : garder le bas du dos au sol">' + esc(m.vigilance) + "</textarea>" +
+      '<span class="lbl">Durée par défaut</span>' + durInputs("mvdur", m.duree) +
+      (special ? "" : '<label class="check"><input type="checkbox" data-bind="mv-check" data-f="cotes"' + (m.cotes ? " checked" : "") + "> Se fait côté gauche puis côté droit</label>" +
+        '<label class="check"><input type="checkbox" data-bind="mv-check" data-f="dos"' + (m.dos ? " checked" : "") + "> Compatible avec un dos fragile</label>") +
+      "</section>" +
+      (special ? "" : '<section class="fbox"><h2 class="sec">Classement</h2>' +
+        '<span class="lbl">Zones travaillées</span><div class="chips">' + ZONES.map(function (z) {
+          var on = (m.zones || []).indexOf(z) >= 0;
+          return '<button type="button" class="chip ' + (on ? "on" : "") + '" data-act="mv-tog" data-f="zones" data-v="' + z + '" aria-pressed="' + on + '">' + cap(z) + "</button>";
+        }).join("") + "</div>" +
+        '<span class="lbl">Niveau</span><div class="seg">' + Object.keys(NIVEAUX).map(function (k) {
+          return '<button type="button" class="' + (m.niveau === k ? "on" : "") + '" data-act="mv-niv" data-v="' + k + '" aria-pressed="' + (m.niveau === k) + '">' + NIVEAUX[k] + "</button>";
+        }).join("") + "</div>" +
+        '<span class="lbl">Matériel</span><div class="chips">' + Object.keys(MATERIEL).map(function (k) {
+          var on = (m.materiel || []).indexOf(k) >= 0;
+          return '<button type="button" class="chip ' + (on ? "on" : "") + '" data-act="mv-tog" data-f="materiel" data-v="' + k + '" aria-pressed="' + on + '">' + MATERIEL[k] + "</button>";
+        }).join("") + "</div>" +
+        '<label for="mv-facile">Variante plus facile</label>' + mvSel("facile") +
+        '<label for="mv-difficile">Variante plus difficile</label>' + mvSel("difficile") +
+        '<label for="mv-yt">Lien YouTube</label><input id="mv-yt" type="url" inputmode="url" data-bind="mv" data-f="youtube" value="' + esc(m.youtube) + '" placeholder="Vide = recherche YouTube automatique">' +
+        "</section>") +
+      "</div>";
+  };
+  VIEWS.mvedit.after = function () {
+    document.querySelectorAll("img[data-media]").forEach(function (img) {
+      C.media.url(img.dataset.media).then(function (u) { if (u) img.src = u; else img.alt = "Image introuvable"; });
+    });
+  };
+  function refreshPreview() {
+    var dr = nav.params.draft; nav.params.preview = previewMv(dr);
+    var el = $('[data-fig="draft"]'); if (el) Figure.mount(el, nav.params.preview, { animate: true });
+  }
+
+  /* Réduction des photos ; les GIF restent intacts pour garder l'animation. */
+  function loadImage(file) {
+    return new Promise(function (res, rej) {
+      var u = URL.createObjectURL(file), im = new Image();
+      im.onload = function () { res({ img: im, done: function () { URL.revokeObjectURL(u); } }); };
+      im.onerror = function () { URL.revokeObjectURL(u); rej(new Error("image")); };
+      im.src = u;
+    });
+  }
+  function shrink(file) {
+    return loadImage(file).then(function (o) {
+      var w = o.img.naturalWidth, h = o.img.naturalHeight, s = Math.min(1, 900 / Math.max(w, h));
+      var c = document.createElement("canvas"); c.width = Math.round(w * s); c.height = Math.round(h * s);
+      c.getContext("2d").drawImage(o.img, 0, 0, c.width, c.height); o.done();
+      return new Promise(function (res) { c.toBlob(function (b) { res(b || file); }, "image/jpeg", 0.82); });
+    }).catch(function () { return file; });
+  }
+  function addFiles(files) {
+    var dr = nav.params.draft;
+    var list = Array.prototype.slice.call(files || []);
+    if (!list.length) return;
+    dr.busy = true; render();
+    var chain = Promise.resolve();
+    list.forEach(function (f) {
+      chain = chain.then(function () {
+        if (!/^image\//.test(f.type) && !/\.gif$/i.test(f.name)) { toast("« " + f.name + " » n'est pas une image."); return; }
+        var isGif = f.type === "image/gif" || /\.gif$/i.test(f.name);
+        if (isGif && f.size > 3 * 1024 * 1024) { toast("Ce GIF fait " + (f.size / 1048576).toFixed(1) + " Mo : la limite est de 3 Mo."); return; }
+        return (isGif ? Promise.resolve(f) : shrink(f)).then(C.media.put).then(function (ref) { dr.medias.push(ref); dr.added.push(ref); });
+      }).catch(function () { toast("Impossible d'enregistrer cette image."); });
+    });
+    chain.then(function () { dr.busy = false; dr.mode = "medias"; if (nav.view === "mvedit") render(); });
+  }
+  function saveMvDraft() {
+    var dr = nav.params.draft, m = dr.mv;
+    m.nom = (m.nom || "").trim();
+    if (!m.nom) { toast("Donne un nom au mouvement."); var n = $("#mv-nom"); if (n) n.focus(); return; }
+    m.duree = Math.max(1, readDur("mvdur") || m.duree || 30);
+    if (!m.youtube) m.youtube = "";
+    m.animation = previewMv(dr).animation;
+    if (dr.isNew) { m.id = uid("perso"); m.origine = "perso"; }
+    else m.origine = S.base[m.id] ? "modifie" : "perso";
+    C.saveMv(m);
+    if (!dr.sharedMedias) dr.removed.forEach(function (ref) { if (!stillUsed(ref, m.id)) C.media.remove(ref); });
+    toast(dr.isNew ? "Mouvement ajouté à la bibliothèque" : "Mouvement enregistré");
+    var fromRoutine = dr.fromRoutine;
+    back();
+    if (fromRoutine && nav.view === "editeur") { nav.params.addMv = m.id; nav.params.addDur = m.duree; render(); }
+    else if (dr.isNew) { go("fiche", { id: m.id }); }
+  }
+  function stillUsed(ref, exceptId) {
+    return C.allMv().some(function (x) { return x.id !== exceptId && x.animation && x.animation.medias && x.animation.medias.indexOf(ref) >= 0; });
+  }
+  function cancelMv() {
+    var dr = nav.params.draft;
+    dr.added.forEach(function (ref) { if (!stillUsed(ref, null)) C.media.remove(ref); });
+    back();
+  }
+  function usages(id) {
+    return (S.routines || []).filter(function (r) {
+      return r.items.some(function (it) { return it.mv === id || (it.bloc && it.items.some(function (c) { return c.mv === id; })); });
+    });
+  }
+
+  /* =========================================================
+     JOURNAL
+     ========================================================= */
+  VIEWS.journal = function (p) {
+    var now = new Date();
+    if (p.y == null) { p.y = now.getFullYear(); p.m = now.getMonth(); }
+    var done = doneDays();
+    var first = new Date(p.y, p.m, 1), lead = (first.getDay() + 6) % 7, nd = new Date(p.y, p.m + 1, 0).getDate();
+    var monthEntries = S.journal.filter(function (e) { var d = new Date(e.t); return d.getFullYear() === p.y && d.getMonth() === p.m; });
+    var mins = Math.round(monthEntries.reduce(function (a, e) { return a + (e.dur || 0); }, 0) / 60);
+    var cells = ""; for (var i = 0; i < lead; i++) cells += '<span class="cal-empty"></span>';
+    for (var d = 1; d <= nd; d++) {
+      var k = p.y + "-" + (p.m + 1) + "-" + d, isToday = dayKey(now) === k;
+      cells += '<span class="cal-day' + (done[k] ? " done" : "") + (isToday ? " today" : "") + '"' + (done[k] ? ' aria-label="' + d + ', séance faite"' : "") + ">" + d + "</span>";
+    }
+    var monthName = first.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+    var list = S.journal.slice().sort(function (a, b) { return b.t - a.t; }).slice(0, 60);
+    return '<header class="top"><div><p class="eyebrow">Suivi</p><h1>Journal</h1></div></header>' +
+      '<div class="stats"><div><strong>' + weekCount() + "/" + S.prefs.objectif + "</strong><span>cette semaine</span></div>" +
+      "<div><strong>" + streak() + "</strong><span>" + (streak() > 1 ? "jours" : "jour") + " de suite<br>(week-ends non comptés)</span></div>" +
+      "<div><strong>" + mins + "</strong><span>minutes ce mois</span></div></div>" +
+      '<section class="cal"><div class="cal-head"><button type="button" class="btn ghost" data-act="cal" data-d="-1" aria-label="Mois précédent">←</button><strong>' + esc(cap(monthName)) + '</strong><button type="button" class="btn ghost" data-act="cal" data-d="1" aria-label="Mois suivant">→</button></div>' +
+      '<div class="cal-grid"><span class="cal-dow">L</span><span class="cal-dow">M</span><span class="cal-dow">M</span><span class="cal-dow">J</span><span class="cal-dow">V</span><span class="cal-dow">S</span><span class="cal-dow">D</span>' + cells + "</div></section>" +
+      '<section><h2 class="sec">Séances</h2>' + (list.length ? '<ul class="rows">' + list.map(function (e) {
+        var dt = new Date(e.t);
+        return '<li class="row"><div class="row-main static"><strong>' + esc(e.nom) + '</strong><span class="meta">' + esc(dt.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" })) + " · " + dt.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }) + " · " + C.fmt(e.dur) + "</span></div>" +
+          '<span class="pill ' + (e.ok ? "ok" : "soft") + '">' + (e.ok ? "Terminée" : "Interrompue") + "</span>" +
+          '<button type="button" class="tool danger" data-act="del-journal" data-t="' + e.t + '" aria-label="Supprimer cette séance">✕</button></li>';
+      }).join("") + "</ul>" : '<p class="empty">Aucune séance pour l\'instant. Elles s\'ajoutent toutes seules à la fin de chaque routine.</p>') + "</section>";
+  };
+
+  /* =========================================================
+     RÉGLAGES : préférences, sauvegarde, export / import
+     ========================================================= */
+  var SYNC_TXT = {
+    compte: "Synchronisé avec ton compte : tes routines, tes mouvements et ton journal sont sur tous tes appareils.",
+    connexion: "Connexion à ton compte…",
+    lent: "Ton compte ne répond pas pour l'instant. Tout est enregistré sur cet appareil et sera envoyé dès que possible.",
+    local: "Enregistré sur cet appareil seulement. Pense à copier ta sauvegarde de temps en temps."
+  };
+  VIEWS.reglages = function (p) {
+    var pr = S.prefs;
+    var t = function (k, label) { return '<label class="check"><input type="checkbox" data-bind="pref" data-k="' + k + '"' + (pr[k] ? " checked" : "") + "> " + label + "</label>"; };
+    return '<header class="top"><div><p class="eyebrow">Application</p><h1>Réglages</h1></div></header>' +
+      '<section class="fbox"><h2 class="sec">Enregistrement</h2><p class="sync sync-' + S.sync + '">' + esc(SYNC_TXT[S.sync] || SYNC_TXT.local) + "</p>" +
+      '<p class="hint">Photos : enregistrées ' + (C.media.where() === "compte" ? "dans ton compte." : "sur cet appareil.") + " Bibliothèque : " + C.allMv().length + " mouvements, chargés depuis " + esc(S.source === "fichiers" ? "les fichiers du dossier bibliotheque." : "la copie intégrée.") + "</p></section>" +
+      '<section class="fbox"><h2 class="sec">Pendant la séance</h2>' + t("son", "Bips sonores") + t("voix", "Voix qui annonce les exercices") + t("vibration", "Vibrations") +
+      '<span class="lbl">Objectif de séances par semaine</span><div class="stepper"><button type="button" data-act="obj" data-d="-1" aria-label="Moins">−</button><span>' + pr.objectif + '</span><button type="button" data-act="obj" data-d="1" aria-label="Plus">+</button></div></section>' +
+      '<section class="fbox"><h2 class="sec">Sauvegarde</h2><p class="hint">Copie le texte pour le garder ou me le donner en session. Les photos ne sont pas incluses.</p>' +
+      '<div class="btnrow"><button type="button" class="btn primary" data-act="export-all">Copier ma sauvegarde</button>' +
+      (C.hasDownloads() ? '<button type="button" class="btn" data-act="download-all">Télécharger (.json)</button>' : "") + "</div>" +
+      (p.exportText ? '<label class="sr" for="exp">Texte de la sauvegarde</label><textarea id="exp" class="code" rows="5" readonly>' + esc(p.exportText) + "</textarea>" : "") +
+      '<label for="imp">Importer une sauvegarde, une routine ou un mouvement</label><textarea id="imp" class="code" rows="4" placeholder="Colle ici le texte copié"></textarea>' +
+      '<button type="button" class="btn" data-act="import">Importer</button></section>' +
+      '<section class="fbox"><h2 class="sec">Routines de base</h2><p class="hint">Réinstalle les routines ' + S.baseRoutines.map(function (r) { return r.nom; }).join(", ") + ' dans leur version d\'origine.</p><button type="button" class="btn" data-act="reinstall">Réinstaller les routines de base</button></section>';
+  };
+  function exportPayload(type, extra) { return JSON.stringify(Object.assign({ format: "calisthenics", version: 1, type: type, date: new Date().toISOString() }, extra), null, 1); }
+  function copyText(text) {
+    try { return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return false; }); }
+    catch (e) { return Promise.resolve(false); }
+  }
+  function doImport(text) {
+    var data;
+    try { data = JSON.parse(text); } catch (e) { toast("Ce texte n'est pas une sauvegarde valide."); return; }
+    if (!data || data.format !== "calisthenics") { toast("Ce texte ne vient pas de cette application."); return; }
+    if (data.type === "sauvegarde") {
+      C.importAll(data);
+      toast((data.routines || []).length + " routines et " + Object.keys(data.mouvements || {}).length + " mouvements importés");
+    } else if (data.type === "routine" && data.routine) {
+      var r = data.routine;
+      Object.keys(data.mouvements || {}).forEach(function (k) { if (!C.mv(k)) C.saveMv(data.mouvements[k]); });
+      if (routineById(r.id)) { r.id = uid("r"); r.nom += " (importée)"; }
+      r.cree = Date.now(); C.saveRoutine(r); toast("Routine « " + r.nom + " » importée");
+    } else if (data.type === "mouvement" && data.mouvement) {
+      var m = data.mouvement; m.origine = S.base[m.id] ? "modifie" : "perso"; C.saveMv(m); toast("Mouvement « " + m.nom + " » importé");
+    } else { toast("Rien à importer dans ce texte."); return; }
+    var imp = $("#imp"); if (imp) imp.value = "";
+  }
+
+  /* =========================================================
+     ACTIONS
+     ========================================================= */
+  var ACT = {
+    back: back,
+    "new-routine": function () {
+      var r = { id: uid("r"), nom: "Nouvelle routine", fav: false, jours: [], depart: 10, fin: 5, items: [] };
+      C.saveRoutine(r); go("editeur", { id: r.id });
+      setTimeout(function () { var n = $("#r-name"); if (n) { n.focus(); n.select(); } }, 50);
+    },
+    "edit-routine": function (el) { go("editeur", { id: el.dataset.id }); },
+    launch: function (el) {
+      var r = routineById(el.dataset.id); if (!r) return;
+      if (!r.items.length) { toast("Ajoute au moins un exercice avant de lancer."); return; }
+      C.Player.launch(r);
+    },
+    fav: function (el) { var r = routineById(el.dataset.id); if (!r) return; r.fav = !r.fav; C.saveRoutine(r); render(); },
+    day: function (el) {
+      var r = routineById(nav.params.id), d = +el.dataset.d; r.jours = r.jours || [];
+      var i = r.jours.indexOf(d); if (i >= 0) r.jours.splice(i, 1); else r.jours.push(d);
+      saveCur(r);
+    },
+    move: function (el) {
+      var r = routineById(nav.params.id), at = getAt(r, el.dataset.path), j = at.i + (+el.dataset.d);
+      if (j < 0 || j >= at.arr.length) return;
+      var x = at.arr.splice(at.i, 1)[0]; at.arr.splice(j, 0, x); saveCur(r);
+    },
+    dup: function (el) { var r = routineById(nav.params.id), at = getAt(r, el.dataset.path); at.arr.splice(at.i + 1, 0, C.clone(at.item)); saveCur(r); },
+    del: function (el) {
+      var r = routineById(nav.params.id), at = getAt(r, el.dataset.path);
+      var go2 = function () { at.arr.splice(at.i, 1); saveCur(r); };
+      if (at.item.bloc && at.item.items.length) dialog({ title: "Retirer ce bloc ?", text: "Ses " + at.item.items.length + " exercices seront retirés aussi.", buttons: [{ label: "Annuler", value: false }, { label: "Retirer", value: true, danger: true, primary: true }] }).then(function (ok) { if (ok) go2(); });
+      else go2();
+    },
+    sides: function (el) { var r = routineById(nav.params.id), at = getAt(r, el.dataset.path); at.item.cotes = at.item.cotes === false; saveCur(r); },
+    rounds: function (el) { var r = routineById(nav.params.id), at = getAt(r, el.dataset.path); at.item.rounds = Math.min(20, Math.max(1, at.item.rounds + (+el.dataset.d))); saveCur(r); },
+    add: function () {
+      var r = routineById(nav.params.id), p = nav.params, m = C.mv(p.addMv); if (!m) return;
+      var dur = readDur("add") || m.duree;
+      var it = { mv: m.id, dur: dur };
+      (p.target !== "root" && r.items[+p.target] && r.items[+p.target].bloc ? r.items[+p.target].items : r.items).push(it);
+      saveCur(r); toast(m.nom + " ajouté");
+    },
+    "add-rest": function () {
+      var r = routineById(nav.params.id), p = nav.params, rest = C.mv("repos");
+      (p.target !== "root" && r.items[+p.target] && r.items[+p.target].bloc ? r.items[+p.target].items : r.items).push({ mv: "repos", dur: rest ? rest.duree : 20 });
+      saveCur(r);
+    },
+    "add-bloc": function () {
+      var r = routineById(nav.params.id);
+      r.items.push({ bloc: true, rounds: 2, items: [] });
+      nav.params.target = String(r.items.length - 1); saveCur(r);
+      toast("Bloc ajouté : les prochains exercices iront dedans");
+    },
+    "routine-menu": function (el) {
+      var r = routineById(el.dataset.id);
+      dialog({ title: r.nom, buttons: [{ label: "Dupliquer", value: "dup" }, { label: "Copier pour export", value: "exp" }, { label: "Supprimer", value: "del", danger: true }, { label: "Fermer", value: null, primary: true }] }).then(function (v) {
+        if (v === "dup") { var c = C.clone(r); c.id = uid("r"); c.nom += " (copie)"; c.fav = false; c.cree = Date.now(); C.saveRoutine(c); nav = { view: "editeur", params: { id: c.id } }; render(); toast("Copie créée"); }
+        if (v === "exp") {
+          var used = {}; JSON.stringify(r).replace(/"mv":"([^"]+)"/g, function (_, id) { if (C.origin(id) === "perso") used[id] = C.mv(id); });
+          var txt = exportPayload("routine", { routine: r, mouvements: used });
+          copyText(txt).then(function (ok) { if (ok) toast("Routine copiée"); else dialog({ title: "Copie la routine", html: '<textarea class="code" rows="6" readonly>' + esc(txt) + "</textarea>" }); });
+        }
+        if (v === "del") dialog({ title: "Supprimer « " + r.nom + " » ?", text: "Cette action est définitive. Le journal garde ses séances.", buttons: [{ label: "Annuler", value: false }, { label: "Supprimer", value: true, danger: true, primary: true }] }).then(function (ok) { if (ok) { C.deleteRoutine(r.id); tab("routines"); toast("Routine supprimée"); } });
+      });
+    },
+    "new-mv": function () { openMvEdit(null, { fromRoutine: nav.view === "editeur" }); },
+    fiche: function (el) { go("fiche", { id: el.dataset.id }); },
+    "edit-mv": function (el) { openMvEdit(el.dataset.id); },
+    "dup-mv": function (el) { openMvEdit(el.dataset.id, { duplicate: true }); },
+    "restore-mv": function (el) {
+      var id = el.dataset.id;
+      dialog({ title: "Rétablir l'original ?", text: "Ta version modifiée sera remplacée par celle du fichier de la bibliothèque.", buttons: [{ label: "Annuler", value: false }, { label: "Rétablir", value: true, primary: true }] }).then(function (ok) {
+        if (!ok) return;
+        var mine = S.mouvements[id];
+        C.deleteMv(id);
+        if (mine && mine.animation && mine.animation.medias) mine.animation.medias.forEach(function (ref) { if (!stillUsed(ref, id)) C.media.remove(ref); });
+        render(); toast("Version d'origine rétablie");
+      });
+    },
+    "del-mv": function (el) {
+      var id = el.dataset.id, m = C.mv(id), u = usages(id);
+      dialog({ title: "Supprimer « " + m.nom + " » ?", text: u.length ? "Il est utilisé dans " + u.length + " routine" + (u.length > 1 ? "s" : "") + " (" + u.map(function (r) { return r.nom; }).join(", ") + "). Il y apparaîtra comme introuvable." : "Ses photos seront supprimées aussi.", buttons: [{ label: "Annuler", value: false }, { label: "Supprimer", value: true, danger: true, primary: true }] }).then(function (ok) {
+        if (!ok) return;
+        C.deleteMv(id);
+        if (m.animation && m.animation.medias) m.animation.medias.forEach(function (ref) { if (!stillUsed(ref, id)) C.media.remove(ref); });
+        back(); toast("Mouvement supprimé");
+      });
+    },
+    "export-mv": function (el) {
+      var m = C.mv(el.dataset.id), txt = exportPayload("mouvement", { mouvement: m });
+      copyText(txt).then(function (ok) { if (ok) toast("Fiche copiée (sans les photos)"); else dialog({ title: "Copie la fiche", html: '<textarea class="code" rows="6" readonly>' + esc(txt) + "</textarea>" }); });
+    },
+    "mv-save": saveMvDraft,
+    "mv-cancel": cancelMv,
+    "mv-mode": function (el) { nav.params.draft.mode = el.dataset.m; render(); },
+    "mv-tog": function (el) {
+      var m = nav.params.draft.mv, f = el.dataset.f, v = el.dataset.v; m[f] = m[f] || [];
+      var i = m[f].indexOf(v); if (i >= 0) m[f].splice(i, 1); else m[f].push(v);
+      el.classList.toggle("on", i < 0); el.setAttribute("aria-pressed", String(i < 0));
+    },
+    "mv-niv": function (el) { nav.params.draft.mv.niveau = el.dataset.v; el.parentNode.querySelectorAll("button").forEach(function (b) { var on = b === el; b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on)); }); },
+    "media-move": function (el) { var a = nav.params.draft.medias, i = +el.dataset.i, j = i + (+el.dataset.d); if (j < 0 || j >= a.length) return; var x = a.splice(i, 1)[0]; a.splice(j, 0, x); render(); },
+    "media-del": function (el) { var dr = nav.params.draft, ref = dr.medias.splice(+el.dataset.i, 1)[0]; if (dr.added.indexOf(ref) >= 0) { dr.added.splice(dr.added.indexOf(ref), 1); C.media.remove(ref); } else dr.removed.push(ref); render(); },
+    bcat: function (el) { nav.params.cat = el.dataset.c; render(); },
+    bdos: function () { nav.params.dos = !nav.params.dos; render(); },
+    cal: function (el) { var p = nav.params, d = new Date(p.y, p.m + (+el.dataset.d), 1); p.y = d.getFullYear(); p.m = d.getMonth(); render(); },
+    "del-journal": function (el) {
+      dialog({ title: "Supprimer cette séance du journal ?", buttons: [{ label: "Annuler", value: false }, { label: "Supprimer", value: true, danger: true, primary: true }] }).then(function (ok) { if (ok) { C.deleteJournal(+el.dataset.t); render(); } });
+    },
+    obj: function (el) { S.prefs.objectif = Math.min(7, Math.max(1, S.prefs.objectif + (+el.dataset.d))); C.savePrefs(); render(); },
+    "export-all": function () {
+      var txt = exportPayload("sauvegarde", { routines: S.routines, mouvements: S.mouvements, journal: S.journal, prefs: S.prefs });
+      nav.params.exportText = txt; render();
+      copyText(txt).then(function (ok) { toast(ok ? "Sauvegarde copiée" : "Sélectionne le texte ci-dessous pour le copier"); });
+    },
+    "download-all": function () {
+      var txt = exportPayload("sauvegarde", { routines: S.routines, mouvements: S.mouvements, journal: S.journal, prefs: S.prefs });
+      C.download("calisthenics-sauvegarde-" + new Date().toISOString().slice(0, 10) + ".json", txt).then(function () { toast("Fichier enregistré"); }, function () { toast("Téléchargement annulé"); });
+    },
+    "import": function () { var t = $("#imp"); if (t && t.value.trim()) doImport(t.value.trim()); else toast("Colle d'abord le texte à importer."); },
+    reinstall: function () {
+      var existing = S.baseRoutines.filter(function (b) { return routineById(b.id); });
+      var doIt = function () { S.baseRoutines.forEach(function (b) { var c = C.clone(b); c.cree = (routineById(b.id) || {}).cree || Date.now(); C.saveRoutine(c); }); toast("Routines de base réinstallées"); };
+      if (existing.length) dialog({ title: "Remplacer les routines de base ?", text: "Tes modifications sur ces routines seront perdues. Les autres routines ne changent pas.", buttons: [{ label: "Annuler", value: false }, { label: "Remplacer", value: true, primary: true }] }).then(function (ok) { if (ok) doIt(); });
+      else doIt();
+    }
+  };
+
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-tab]");
+    if (t) { tab(t.dataset.tab); return; }
+    var a = e.target.closest("[data-act]");
+    if (!a || a.disabled || !$("#view").contains(a) && !$("#tabs").contains(a)) return;
+    var fn = ACT[a.dataset.act]; if (fn) { e.preventDefault(); fn(a, e); }
+  });
+  document.addEventListener("input", function (e) {
+    var el = e.target, b = el.dataset && el.dataset.bind;
+    if (!b || !$("#view").contains(el)) return;
+    if (b === "r-name") { var r = routineById(nav.params.id); r.nom = el.value; clearTimeout(ACT.nameTm); ACT.nameTm = setTimeout(function () { saveCur(r, false); }, 400); }
+    else if (b === "bq") { nav.params.q = el.value; fillGrid(nav.params); }
+    else if (b === "mv") { nav.params.draft.mv[el.dataset.f] = el.value; }
+  });
+  document.addEventListener("change", function (e) {
+    var el = e.target;
+    if (!$("#view").contains(el)) return;
+    if (el.dataset.file) { addFiles(el.files); el.value = ""; return; }
+    if (el.dataset.dur) {
+      var key = el.dataset.dur, sec = readDur(key);
+      if (nav.view === "editeur") {
+        var p = nav.params, r = routineById(p.id);
+        if (key === "add") { p.addDur = sec; return; }
+        sec = Math.max(1, sec);
+        if (key === "depart" || key === "fin") r[key] = sec; else getAt(r, key).item.dur = sec;
+        saveCur(r);
+      } else if (nav.view === "mvedit") { nav.params.draft.mv.duree = Math.max(1, sec); }
+      return;
+    }
+    var b = el.dataset.bind;
+    if (b === "add-mv") { var m = C.mv(el.value); nav.params.addMv = el.value; nav.params.addDur = m ? m.duree : 30; render(); }
+    else if (b === "add-target") { nav.params.target = el.value; }
+    else if (b === "bz") { nav.params.zone = el.value; render(); }
+    else if (b === "mv") { nav.params.draft.mv[el.dataset.f] = el.value; if (el.dataset.f === "categorie") render(); }
+    else if (b === "mv-check") { nav.params.draft.mv[el.dataset.f] = el.checked; }
+    else if (b === "mv-ref") { nav.params.draft.ref = el.value; refreshPreview(); }
+    else if (b === "mv-var") { var dm = nav.params.draft.mv; dm.variantes = dm.variantes || {}; dm.variantes[el.dataset.k] = el.value || null; }
+    else if (b === "pref") { S.prefs[el.dataset.k] = el.checked; C.savePrefs(); }
+  });
+
+  /* Données reçues d'un autre appareil : on rafraîchit, sauf pendant une saisie. */
+  var pendingRender = false;
+  C.on(function (kind) {
+    if (kind && kind.type === "erreur") { toast(kind.message); return; }
+    if (kind === "caps" && nav.view !== "reglages") return;
+    if (nav.view === "mvedit") return;
+    var a = document.activeElement;
+    if (a && $("#view").contains(a) && /INPUT|TEXTAREA|SELECT/.test(a.tagName)) { pendingRender = true; return; }
+    render();
+  });
+  document.addEventListener("focusout", function () { if (pendingRender) { pendingRender = false; setTimeout(function () { var a = document.activeElement; if (!a || !/INPUT|TEXTAREA|SELECT/.test(a.tagName)) render(); else pendingRender = true; }, 50); } });
+
+  C.journalStats = { weekCount: weekCount };
+
+  /* ---------- démarrage ---------- */
+  function boot() {
+    render();
+    C.loadLibrary().then(function () { render(); }, function () {
+      $("#view").innerHTML = '<p class="empty">La bibliothèque n\'a pas pu être chargée. Recharge la page.</p>';
+    }).then(function () { C.connect(); });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
+})(window.CAL);
+
+</script>
+</body>
+</html>

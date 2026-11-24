@@ -1,0 +1,135 @@
+{
+  "id": "chatvache",
+  "nom": "Chat-vache",
+  "categorie": "echauffement",
+  "duree": 60,
+  "cotes": false,
+  "description": "Mobilise toute la colonne en douceur, en alternant dos rond et dos creusé.",
+  "consigne": "À quatre pattes : dos rond en expirant, dos légèrement creusé en inspirant. 10 répétitions lentes.",
+  "vigilance": "Amplitude douce : ne force pas la cambrure en bas du dos.",
+  "zones": [
+    "dos",
+    "tronc"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=chat+vache+exercice+dos+tutoriel",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          138,
+          66
+        ],
+        "n": [
+          [
+            124,
+            76,
+            138,
+            66
+          ],
+          [
+            80,
+            80,
+            102,
+            88,
+            124,
+            76
+          ],
+          [
+            124,
+            76,
+            124,
+            121
+          ],
+          [
+            80,
+            80,
+            80,
+            121,
+            42,
+            121
+          ]
+        ],
+        "f": [
+          [
+            116,
+            78,
+            116,
+            121
+          ],
+          [
+            88,
+            82,
+            88,
+            121,
+            50,
+            121
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          136,
+          90
+        ],
+        "n": [
+          [
+            124,
+            76,
+            136,
+            90
+          ],
+          [
+            80,
+            80,
+            102,
+            66,
+            124,
+            76
+          ],
+          [
+            124,
+            76,
+            124,
+            121
+          ],
+          [
+            80,
+            80,
+            80,
+            121,
+            42,
+            121
+          ]
+        ],
+        "f": [
+          [
+            116,
+            78,
+            116,
+            121
+          ],
+          [
+            88,
+            82,
+            88,
+            121,
+            50,
+            121
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}

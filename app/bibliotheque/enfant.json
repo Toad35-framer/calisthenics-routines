@@ -1,0 +1,109 @@
+{
+  "id": "enfant",
+  "nom": "Posture de l'enfant",
+  "categorie": "etirement",
+  "duree": 45,
+  "cotes": false,
+  "description": "Relâche le dos et les hanches en fin de séance.",
+  "consigne": "Assis sur les talons, bras allongés devant toi, front vers le sol. Respire lentement.",
+  "vigilance": "Écarte les genoux si le ventre gêne.",
+  "zones": [
+    "dos",
+    "hanches"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=posture+de+l'enfant+yoga+tutoriel",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          112,
+          111
+        ],
+        "n": [
+          [
+            96,
+            106,
+            112,
+            111
+          ],
+          [
+            50,
+            92,
+            74,
+            98,
+            96,
+            106
+          ],
+          [
+            50,
+            92,
+            86,
+            119,
+            36,
+            119
+          ],
+          [
+            96,
+            108,
+            117,
+            113,
+            138,
+            118
+          ]
+        ],
+        "f": [],
+        "t": []
+      },
+      {
+        "h": [
+          112,
+          114
+        ],
+        "n": [
+          [
+            96,
+            109,
+            112,
+            114
+          ],
+          [
+            48,
+            94,
+            72,
+            101,
+            96,
+            109
+          ],
+          [
+            48,
+            94,
+            86,
+            119,
+            36,
+            119
+          ],
+          [
+            96,
+            111,
+            117,
+            115,
+            138,
+            119
+          ]
+        ],
+        "f": [],
+        "t": []
+      }
+    ]
+  }
+}

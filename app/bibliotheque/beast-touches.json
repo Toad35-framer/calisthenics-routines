@@ -1,0 +1,143 @@
+{
+  "id": "beast-touches",
+  "nom": "Beast · touches d'épaule",
+  "categorie": "force",
+  "duree": 40,
+  "cotes": false,
+  "description": "Gainage anti-rotation en position Animal Flow : les obliques empêchent le bassin de tourner.",
+  "consigne": "En position Beast, genoux décollés. Touche l'épaule opposée avec une main, repose-la, change. Lentement.",
+  "vigilance": "Le bassin ne tangue pas : écarte un peu les pieds si besoin.",
+  "zones": [
+    "tronc",
+    "épaules"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=bear+plank+shoulder+taps+tutorial",
+  "variantes": {
+    "facile": "beast",
+    "difficile": "pallof"
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          138,
+          62
+        ],
+        "n": [
+          [
+            124,
+            72,
+            138,
+            62
+          ],
+          [
+            80,
+            72,
+            102,
+            72,
+            124,
+            72
+          ],
+          [
+            124,
+            72,
+            124,
+            96,
+            124,
+            121
+          ],
+          [
+            80,
+            72,
+            84,
+            108,
+            50,
+            121
+          ]
+        ],
+        "f": [
+          [
+            116,
+            74,
+            116,
+            98,
+            116,
+            121
+          ],
+          [
+            88,
+            72,
+            92,
+            108,
+            58,
+            121
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          138,
+          62
+        ],
+        "n": [
+          [
+            124,
+            72,
+            138,
+            62
+          ],
+          [
+            80,
+            72,
+            102,
+            72,
+            124,
+            72
+          ],
+          [
+            124,
+            72,
+            138,
+            88,
+            124,
+            76
+          ],
+          [
+            80,
+            72,
+            84,
+            108,
+            50,
+            121
+          ]
+        ],
+        "f": [
+          [
+            116,
+            74,
+            116,
+            98,
+            116,
+            121
+          ],
+          [
+            88,
+            72,
+            92,
+            108,
+            58,
+            121
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}
