@@ -1,0 +1,125 @@
+{
+  "id": "rowing",
+  "nom": "Rowing élastique",
+  "categorie": "force",
+  "duree": 40,
+  "cotes": false,
+  "description": "Renforce le haut du dos et corrige la posture.",
+  "consigne": "Assis, jambes tendues, élastique autour des pieds. Tire les coudes vers l'arrière, omoplates serrées.",
+  "vigilance": "Dos droit, sans te pencher en arrière pour tirer.",
+  "zones": [
+    "dos",
+    "bras",
+    "épaules"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis",
+    "elastique"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=rowing+assis+%C3%A9lastique+exercice",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          50,
+          59
+        ],
+        "n": [
+          [
+            50,
+            73,
+            50,
+            59
+          ],
+          [
+            50,
+            117,
+            50,
+            95,
+            50,
+            73
+          ],
+          [
+            50,
+            117,
+            86,
+            117,
+            122,
+            117
+          ],
+          [
+            50,
+            76,
+            73,
+            78,
+            96,
+            80
+          ]
+        ],
+        "f": [],
+        "t": [
+          [
+            96,
+            80,
+            122,
+            115
+          ]
+        ]
+      },
+      {
+        "h": [
+          44,
+          59
+        ],
+        "n": [
+          [
+            46,
+            73,
+            44,
+            59
+          ],
+          [
+            50,
+            117,
+            48,
+            95,
+            46,
+            73
+          ],
+          [
+            50,
+            117,
+            86,
+            117,
+            122,
+            117
+          ],
+          [
+            46,
+            76,
+            30,
+            90,
+            56,
+            92
+          ]
+        ],
+        "f": [],
+        "t": [
+          [
+            56,
+            92,
+            122,
+            115
+          ]
+        ]
+      }
+    ]
+  }
+}

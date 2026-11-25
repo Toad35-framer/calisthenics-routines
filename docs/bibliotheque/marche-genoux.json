@@ -1,0 +1,142 @@
+{
+  "id": "marche-genoux",
+  "nom": "Marche genoux hauts",
+  "categorie": "echauffement",
+  "duree": 60,
+  "cotes": false,
+  "description": "Cardio doux, sans impact : fait monter le cœur et réveille les hanches.",
+  "consigne": "Debout, monte un genou à hauteur de hanche puis l'autre, bras opposés qui balancent. Rythme soutenu, sans sauter.",
+  "vigilance": "Buste droit. On marche sur place, on ne saute pas.",
+  "zones": [
+    "cuisses",
+    "hanches",
+    "tronc"
+  ],
+  "niveau": "debutant",
+  "materiel": [],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=marche+sur+place+genoux+hauts+sans+impact",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          100,
+          -9
+        ],
+        "n": [
+          [
+            100,
+            5,
+            100,
+            -9
+          ],
+          [
+            100,
+            49,
+            100,
+            27,
+            100,
+            5
+          ],
+          [
+            100,
+            49,
+            136,
+            49,
+            136,
+            85
+          ],
+          [
+            100,
+            8,
+            90,
+            30,
+            84,
+            50
+          ]
+        ],
+        "f": [
+          [
+            100,
+            121,
+            100,
+            85,
+            100,
+            49
+          ],
+          [
+            100,
+            8,
+            112,
+            28,
+            124,
+            40
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          100,
+          -9
+        ],
+        "n": [
+          [
+            100,
+            5,
+            100,
+            -9
+          ],
+          [
+            100,
+            49,
+            100,
+            27,
+            100,
+            5
+          ],
+          [
+            100,
+            121,
+            100,
+            85,
+            100,
+            49
+          ],
+          [
+            100,
+            8,
+            112,
+            28,
+            124,
+            40
+          ]
+        ],
+        "f": [
+          [
+            100,
+            49,
+            136,
+            49,
+            136,
+            85
+          ],
+          [
+            100,
+            8,
+            90,
+            30,
+            84,
+            50
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}

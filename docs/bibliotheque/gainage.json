@@ -1,0 +1,93 @@
+{
+  "id": "gainage",
+  "nom": "Gainage planche",
+  "categorie": "force",
+  "duree": 30,
+  "cotes": false,
+  "description": "Gainage statique sur les avant-bras.",
+  "consigne": "Avant-bras au sol, coudes sous les épaules, corps droit des talons à la tête. Respire.",
+  "vigilance": "Bassin aligné, ni trop haut ni affaissé. Commence par 15 à 20 secondes.",
+  "zones": [
+    "tronc",
+    "épaules"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=gainage+planche+technique+d%C3%A9butant",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          154,
+          92
+        ],
+        "n": [
+          [
+            138,
+            99,
+            154,
+            92
+          ],
+          [
+            24,
+            118,
+            81,
+            108,
+            138,
+            99
+          ],
+          [
+            138,
+            99,
+            138,
+            121,
+            162,
+            121
+          ]
+        ],
+        "f": [],
+        "t": []
+      },
+      {
+        "h": [
+          154,
+          91
+        ],
+        "n": [
+          [
+            138,
+            98,
+            154,
+            91
+          ],
+          [
+            24,
+            118,
+            81,
+            106,
+            138,
+            98
+          ],
+          [
+            138,
+            98,
+            138,
+            121,
+            162,
+            121
+          ]
+        ],
+        "f": [],
+        "t": []
+      }
+    ]
+  }
+}

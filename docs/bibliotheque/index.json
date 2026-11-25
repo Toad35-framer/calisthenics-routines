@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "maj": "2026-11-12",
+  "mouvements": [
+    "depart.json",
+    "fin.json",
+    "repos.json",
+    "chatvache.json",
+    "birddog.json",
+    "pont.json",
+    "poignets.json",
+    "hanches.json",
+    "pompes.json",
+    "pompes-inclinees.json",
+    "squats.json",
+    "rowing.json",
+    "deadbug.json",
+    "gainage.json",
+    "gainage-lateral.json",
+    "ape.json",
+    "beast.json",
+    "crab.json",
+    "marche-genoux.json",
+    "curlup.json",
+    "beast-touches.json",
+    "grimpeur.json",
+    "pallof.json",
+    "etirement-lateral.json",
+    "fente.json",
+    "ischios.json",
+    "enfant.json"
+  ]
+}

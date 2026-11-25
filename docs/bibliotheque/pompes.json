@@ -1,0 +1,95 @@
+{
+  "id": "pompes",
+  "nom": "Pompes",
+  "categorie": "force",
+  "duree": 40,
+  "cotes": false,
+  "description": "Renforce pectoraux, épaules et bras, avec un gros travail de gainage.",
+  "consigne": "Corps gainé. Descends la poitrine vers le sol, repousse. Garde 2 répétitions en réserve.",
+  "vigilance": "Ne laisse pas tomber le bassin : le corps reste droit comme une planche.",
+  "zones": [
+    "pectoraux",
+    "bras",
+    "épaules",
+    "tronc"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=pompes+technique+d%C3%A9butant",
+  "variantes": {
+    "facile": "pompes-inclinees",
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          152,
+          65
+        ],
+        "n": [
+          [
+            136,
+            75,
+            152,
+            65
+          ],
+          [
+            26,
+            119,
+            81,
+            97,
+            136,
+            75
+          ],
+          [
+            136,
+            75,
+            136,
+            98,
+            136,
+            121
+          ]
+        ],
+        "f": [],
+        "t": []
+      },
+      {
+        "h": [
+          152,
+          103
+        ],
+        "n": [
+          [
+            136,
+            108,
+            152,
+            103
+          ],
+          [
+            26,
+            119,
+            81,
+            113.5,
+            136,
+            108
+          ],
+          [
+            136,
+            108,
+            114,
+            104,
+            136,
+            121
+          ]
+        ],
+        "f": [],
+        "t": []
+      }
+    ]
+  }
+}

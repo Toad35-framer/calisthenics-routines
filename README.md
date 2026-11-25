@@ -13,18 +13,28 @@ Application web pour créer et suivre des routines courtes de calisthenics, d'An
 
 Routines fournies : A · Force (14:40), B · Animal Flow (14:35), C · Ventre et obliques (14:55).
 
-## Utiliser l'application
+## Mettre l'application en ligne (GitHub Pages)
 
-- **En ligne avec GitHub Pages** : dans le dépôt, *Settings → Pages → Source : GitHub Actions*. Le workflow `.github/workflows/pages.yml` publie le dossier `app/` à chaque envoi sur `main`. L'adresse s'affiche ensuite dans *Settings → Pages*.
-- **En local** : ouvre `app/index.html` dans un navigateur. La page fonctionne même ouverte seule.
+1. Le dépôt doit être **public** : avec un compte GitHub gratuit, GitHub Pages ne fonctionne pas sur un dépôt privé.
+2. Dans le dépôt : *Settings → Pages*.
+3. *Source* : **Deploy from a branch**. *Branch* : **main**, dossier **/docs**, puis *Save*.
+4. Attends une à deux minutes : l'adresse du site apparaît en haut de *Settings → Pages*, de la forme `https://TON-COMPTE.github.io/calisthenics-routines/`.
+
+Autres réglages possibles : dossier **/(root)** (le fichier `index.html` à la racine redirige vers `docs/`), ou *Source : GitHub Actions* avec le workflow `.github/workflows/pages.yml`.
+
+Sur github.com, ouvrir `docs/index.html` dans la liste des fichiers affiche le **code**, pas l'application : utilise l'adresse GitHub Pages.
+
+**En local** : ouvre `docs/index.html` dans un navigateur. La page fonctionne même ouverte seule.
 
 Hors de claude.ai, les routines, mouvements perso, photos et le journal sont enregistrés **dans le navigateur de l'appareil** (pas de synchronisation entre appareils). Utilise *Réglages → Sauvegarde* pour les transférer.
 
 ## Structure
 
 ```
-app/                      Le site publié
+index.html                Redirection vers docs/
+docs/                     Le site publié (dossier lu par GitHub Pages)
   index.html              Application complète (scripts intégrés)
+  .nojekyll               Publie les fichiers tels quels, sans traitement Jekyll
   js/                     Code source : figure.js, store.js, player.js, app.js
   bibliotheque/           Un fichier JSON par mouvement, index.json, LISEZMOI.md
   routines/               Routines de base
@@ -32,12 +42,12 @@ outils/                   Construction
   gen-lib.js              Génère bibliotheque/ et routines/ (fiches, poses, routines)
   poses.js                Dessins du bonhomme des premiers mouvements
   index.src.html          Modèle de la page (styles et structure)
-  build.py                Intègre les scripts dans app/index.html
+  build.py                Intègre les scripts dans docs/index.html
 ```
 
 ## Modifier ou ajouter un mouvement
 
-1. Ajoute ou modifie la fiche dans `outils/gen-lib.js` (tableau `M`) et, si besoin, ses deux images de bonhomme (`NEW`). Le format est décrit dans `app/bibliotheque/LISEZMOI.md`.
+1. Ajoute ou modifie la fiche dans `outils/gen-lib.js` (tableau `M`) et, si besoin, ses deux images de bonhomme (`NEW`). Le format est décrit dans `docs/bibliotheque/LISEZMOI.md`.
 2. Reconstruis :
 
 ```sh
@@ -47,7 +57,11 @@ python3 outils/build.py
 
 3. Envoie les changements sur GitHub : la page se met à jour toute seule.
 
-Si tu modifies `app/js/*.js` ou `outils/index.src.html`, relance seulement `python3 outils/build.py`.
+Si tu modifies `docs/js/*.js` ou `outils/index.src.html`, relance seulement `python3 outils/build.py`.
+
+## Licence
+
+© 2026 Jean Pineau · [Creative Commons BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.fr) : Attribution, Pas d'utilisation commerciale, Pas de modification. Voir [LICENSE.md](LICENSE.md).
 
 ## Avertissement
 

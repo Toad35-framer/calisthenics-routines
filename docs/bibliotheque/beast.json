@@ -1,0 +1,144 @@
+{
+  "id": "beast",
+  "nom": "Beast",
+  "categorie": "flow",
+  "duree": 20,
+  "cotes": false,
+  "description": "Position de base de l'Animal Flow : la bête.",
+  "consigne": "À quatre pattes, genoux décollés de quelques centimètres, dos plat.",
+  "vigilance": "Dos plat, genoux juste au-dessus du sol.",
+  "zones": [
+    "épaules",
+    "tronc",
+    "cuisses"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "tapis"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=animal+flow+beast+tutorial",
+  "variantes": {
+    "facile": null,
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          138,
+          62
+        ],
+        "n": [
+          [
+            124,
+            72,
+            138,
+            62
+          ],
+          [
+            80,
+            72,
+            102,
+            72,
+            124,
+            72
+          ],
+          [
+            124,
+            72,
+            124,
+            96,
+            124,
+            121
+          ],
+          [
+            80,
+            72,
+            84,
+            108,
+            50,
+            121
+          ]
+        ],
+        "f": [
+          [
+            116,
+            74,
+            116,
+            98,
+            116,
+            121
+          ],
+          [
+            88,
+            72,
+            92,
+            108,
+            58,
+            121
+          ]
+        ],
+        "t": []
+      },
+      {
+        "h": [
+          138,
+          62
+        ],
+        "n": [
+          [
+            124,
+            72,
+            138,
+            62
+          ],
+          [
+            80,
+            72,
+            102,
+            72,
+            124,
+            72
+          ],
+          [
+            124,
+            72,
+            124,
+            96,
+            124,
+            121
+          ],
+          [
+            80,
+            72,
+            84,
+            112,
+            50,
+            121
+          ]
+        ],
+        "f": [
+          [
+            116,
+            74,
+            116,
+            98,
+            116,
+            121
+          ],
+          [
+            88,
+            72,
+            92,
+            112,
+            58,
+            121
+          ]
+        ],
+        "t": []
+      }
+    ]
+  }
+}

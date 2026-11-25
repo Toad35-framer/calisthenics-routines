@@ -1,0 +1,122 @@
+{
+  "id": "pallof",
+  "nom": "Pallof press",
+  "categorie": "force",
+  "duree": 30,
+  "cotes": true,
+  "description": "L'exercice de référence pour les obliques en anti-rotation, avec ton élastique.",
+  "consigne": "Élastique attaché sur le côté à hauteur de poitrine. Debout de profil, tiens-le contre la poitrine, tends les bras devant toi sans laisser le buste tourner, tiens 2 secondes, reviens.",
+  "vigilance": "Bassin et épaules restent face à l'avant. Genoux légèrement fléchis.",
+  "zones": [
+    "tronc"
+  ],
+  "niveau": "debutant",
+  "materiel": [
+    "elastique"
+  ],
+  "dos": true,
+  "youtube": "https://www.youtube.com/results?search_query=pallof+press+%C3%A9lastique+tutoriel",
+  "variantes": {
+    "facile": "beast-touches",
+    "difficile": null
+  },
+  "animation": {
+    "type": "baton",
+    "images": [
+      {
+        "h": [
+          100,
+          -9
+        ],
+        "n": [
+          [
+            100,
+            5,
+            100,
+            -9
+          ],
+          [
+            100,
+            49,
+            100,
+            27,
+            100,
+            5
+          ],
+          [
+            100,
+            121,
+            102,
+            85,
+            100,
+            49
+          ],
+          [
+            100,
+            8,
+            114,
+            18,
+            108,
+            26
+          ]
+        ],
+        "f": [],
+        "t": [
+          [
+            108,
+            26,
+            22,
+            28
+          ]
+        ]
+      },
+      {
+        "h": [
+          100,
+          -9
+        ],
+        "n": [
+          [
+            100,
+            5,
+            100,
+            -9
+          ],
+          [
+            100,
+            49,
+            100,
+            27,
+            100,
+            5
+          ],
+          [
+            100,
+            121,
+            102,
+            85,
+            100,
+            49
+          ],
+          [
+            100,
+            8,
+            123,
+            10,
+            146,
+            12
+          ]
+        ],
+        "f": [],
+        "t": [
+          [
+            146,
+            12,
+            22,
+            28
+          ]
+        ]
+      }
+    ]
+  }
+}
