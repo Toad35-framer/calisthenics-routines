@@ -1,5 +1,11 @@
 # Historique des versions
 
+## 1.2.0 · 26 novembre 2026
+
+- Soutien Ko-fi : bouton discret « ☕ Payer un coup » en bas de l'accueil et des réglages.
+- Compteur d'ouvertures gardé dans le navigateur (`nb_utilisations_calisthenics-routines`) et message de remerciement non bloquant toutes les 10 ouvertures. Aucune donnée n'est envoyée à un serveur.
+- Textes des fiches et du README rendus génériques.
+
 ## 1.1.2 · 25 novembre 2026
 
 - Correction GitHub Pages : le site est déplacé de `app/` vers `docs/`, l'un des deux dossiers que GitHub Pages sait publier depuis une branche. Le site publié depuis `app/` ne se lançait pas.

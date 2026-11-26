@@ -218,6 +218,13 @@ textarea.code{font-family:ui-monospace,Menlo,monospace;font-size:12px}
 .cc-text{font-size:12px;line-height:1.4;text-align:left}
 .cc-text b{color:var(--ink);font-weight:600}
 
+/* soutien Ko-fi */
+.kofi-btn{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;margin-bottom:8px;border:1.5px solid var(--line);border-radius:18px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none}
+.kofi-btn:hover{background:var(--soft)}
+#kofi-pop{position:fixed;left:16px;right:16px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:15;max-width:420px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-left:5px solid #c98a00;border-radius:14px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:flex;flex-direction:column;gap:12px}
+#kofi-pop p{margin:0}
+#kofi-pop .btnrow{justify-content:flex-end}
+
 /* onglets */
 #tabs{position:fixed;left:0;right:0;bottom:0;z-index:5;display:none;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 body.has-tabs #tabs{display:grid}
